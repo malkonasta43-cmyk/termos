@@ -1,0 +1,1471 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Термоси — Все про збереження тепла та свіжості</title>
+    <style>
+        :root {
+            --primary-color: #1e3a8a;
+            --primary-hover: #1e40af;
+            --accent-color: #3b82f6;
+            --accent-light: #eff6ff;
+            --accent-emerald: #10b981;
+            --text-main: #1f2937;
+            --text-muted: #4b5563;
+            --text-subtle: #6b7280;
+            --bg-page: #f8fafc;
+            --bg-card: #ffffff;
+            --bg-secondary: #f1f5f9;
+            --border-color: #e2e8f0;
+            --border-focus: #3b82f6;
+            --star-gold: #f59e0b;
+            --star-gray: #d1d5db;
+            --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.08);
+            --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.06);
+            --shadow-lg: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
+            --radius-sm: 8px;
+            --radius-md: 12px;
+            --radius-lg: 18px;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            background-color: var(--bg-page);
+            color: var(--text-main);
+            line-height: 1.65;
+            padding: 40px 20px;
+        }
+
+        .container {
+            max-width: 1160px;
+            margin: 0 auto;
+            background: var(--bg-card);
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-lg);
+            border: 1px solid var(--border-color);
+            overflow: hidden;
+        }
+
+        /* Header */
+        header {
+            background: linear-gradient(135deg, #1e3a8a 0%, #2563eb 100%);
+            color: #ffffff;
+            padding: 45px 40px;
+            text-align: center;
+            position: relative;
+        }
+
+        header h1 {
+            font-size: 2.75rem;
+            font-weight: 800;
+            letter-spacing: -0.5px;
+            margin-bottom: 8px;
+        }
+
+        header p {
+            font-size: 1.15rem;
+            opacity: 0.92;
+            max-width: 650px;
+            margin: 0 auto 16px auto;
+            font-weight: 300;
+        }
+
+        .header-nav {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 15px;
+            flex-wrap: wrap;
+        }
+
+        .nav-btn {
+            background: rgba(255, 255, 255, 0.18);
+            color: #ffffff;
+            text-decoration: none;
+            padding: 8px 18px;
+            border-radius: 30px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            transition: all 0.2s ease;
+        }
+
+        .nav-btn:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: translateY(-1px);
+        }
+
+        /* Main Content Layout */
+        .content-wrapper {
+            display: flex;
+            flex-direction: row;
+            gap: 40px;
+            padding: 45px 40px;
+            align-items: flex-start;
+        }
+
+        .text-column {
+            flex: 1;
+            min-width: 0;
+        }
+
+        .image-column {
+            flex: 0 0 340px;
+            position: sticky;
+            top: 30px;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            align-items: center;
+        }
+
+        .image-card, .sidebar-card {
+            width: 100%;
+            background: #ffffff;
+            border-radius: var(--radius-md);
+            padding: 20px;
+            border: 1px solid var(--border-color);
+            box-shadow: var(--shadow-md);
+            text-align: center;
+            transition: transform 0.25s ease, box-shadow 0.25s ease;
+        }
+
+        .image-card:hover, .sidebar-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 28px rgba(0, 0, 0, 0.12);
+        }
+
+        .image-card img {
+            width: 100%;
+            max-width: 280px;
+            height: auto;
+            border-radius: 8px;
+            display: block;
+            margin: 0 auto;
+            object-fit: contain;
+        }
+
+        .image-caption {
+            margin-top: 14px;
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            font-style: italic;
+        }
+
+        .sidebar-card {
+            text-align: left;
+            background: linear-gradient(180deg, #f8fafc 0%, #eff6ff 100%);
+        }
+
+        .sidebar-card h3 {
+            font-size: 1.1rem;
+            color: var(--primary-color);
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .sidebar-card p {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            margin-bottom: 12px;
+        }
+
+        .sidebar-card .btn-sidebar {
+            display: inline-block;
+            width: 100%;
+            text-align: center;
+            background: var(--accent-color);
+            color: #ffffff;
+            text-decoration: none;
+            padding: 10px 16px;
+            border-radius: var(--radius-sm);
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: background 0.2s ease;
+        }
+
+        .sidebar-card .btn-sidebar:hover {
+            background: var(--primary-hover);
+        }
+
+        /* Content Sections */
+        section {
+            margin-bottom: 35px;
+            background: #ffffff;
+        }
+
+        section:last-child {
+            margin-bottom: 0;
+        }
+
+        h2 {
+            font-size: 1.5rem;
+            color: var(--primary-color);
+            margin-bottom: 14px;
+            position: relative;
+            padding-left: 14px;
+            border-left: 4px solid var(--accent-color);
+        }
+
+        p {
+            color: var(--text-muted);
+            margin-bottom: 12px;
+            font-size: 1.025rem;
+        }
+
+        /* Lists styling */
+        ul, ol {
+            padding-left: 24px;
+            margin-top: 10px;
+            margin-bottom: 14px;
+            color: var(--text-muted);
+        }
+
+        li {
+            margin-bottom: 10px;
+            padding-left: 4px;
+            font-size: 1rem;
+        }
+
+        li strong {
+            color: var(--text-main);
+        }
+
+        ul {
+            list-style-type: disc;
+        }
+
+        ul li::marker {
+            color: var(--accent-color);
+            font-size: 1.1rem;
+        }
+
+        ol {
+            list-style-type: decimal;
+        }
+
+        ol li::marker {
+            color: var(--primary-color);
+            font-weight: 700;
+        }
+
+        .highlight-box {
+            background-color: var(--accent-light);
+            border-radius: var(--radius-md);
+            padding: 18px 22px;
+            border-left: 4px solid var(--accent-color);
+            margin-top: 15px;
+        }
+
+        .highlight-box p {
+            color: #1e40af;
+            margin-bottom: 0;
+            font-weight: 500;
+        }
+
+        /* =========================================
+           FEEDBACK & REVIEWS SECTION
+           ========================================= */
+        .feedback-section {
+            background: #ffffff;
+            border-top: 2px solid var(--border-color);
+            padding: 50px 40px;
+        }
+
+        .feedback-header {
+            text-align: center;
+            margin-bottom: 35px;
+        }
+
+        .feedback-header h2 {
+            border-left: none;
+            padding-left: 0;
+            font-size: 2rem;
+            color: var(--primary-color);
+            display: inline-block;
+            position: relative;
+        }
+
+        .feedback-header h2::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 4px;
+            background: var(--accent-color);
+            margin: 8px auto 0;
+            border-radius: 2px;
+        }
+
+        .feedback-header p {
+            font-size: 1.05rem;
+            color: var(--text-muted);
+            max-width: 600px;
+            margin: 10px auto 0;
+        }
+
+        .feedback-grid {
+            display: grid;
+            grid-template-columns: 1fr 1.35fr;
+            gap: 35px;
+            align-items: start;
+        }
+
+        /* Feedback Form Box */
+        .feedback-form-card {
+            background: #ffffff;
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-md);
+            padding: 28px;
+            box-shadow: var(--shadow-md);
+        }
+
+        .feedback-form-card h3 {
+            font-size: 1.25rem;
+            color: var(--primary-color);
+            margin-bottom: 6px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .feedback-form-card .form-subtitle {
+            font-size: 0.9rem;
+            color: var(--text-subtle);
+            margin-bottom: 20px;
+        }
+
+        .form-group {
+            margin-bottom: 18px;
+        }
+
+        .form-label {
+            display: block;
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--text-main);
+            margin-bottom: 6px;
+        }
+
+        .form-label span.req {
+            color: #ef4444;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 10px 14px;
+            font-size: 0.95rem;
+            border: 1.5px solid var(--border-color);
+            border-radius: var(--radius-sm);
+            background: #ffffff;
+            color: var(--text-main);
+            transition: all 0.2s ease;
+            font-family: inherit;
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: var(--border-focus);
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.15);
+        }
+
+        textarea.form-control {
+            resize: vertical;
+            min-height: 105px;
+        }
+
+        /* Interactive Star Rating Selector */
+        .rating-selector {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            margin-top: 4px;
+        }
+
+        .star-btn {
+            background: none;
+            border: none;
+            font-size: 1.8rem;
+            color: var(--star-gray);
+            cursor: pointer;
+            line-height: 1;
+            padding: 2px 4px;
+            transition: color 0.15s ease, transform 0.15s ease;
+        }
+
+        .star-btn:hover {
+            transform: scale(1.15);
+        }
+
+        .star-btn.active,
+        .star-btn.hovered {
+            color: var(--star-gold);
+        }
+
+        .rating-feedback-text {
+            font-size: 0.88rem;
+            font-weight: 600;
+            color: var(--accent-color);
+            margin-left: 8px;
+        }
+
+        .category-radios {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .category-radio-btn {
+            position: relative;
+        }
+
+        .category-radio-btn input {
+            position: absolute;
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+
+        .category-radio-btn label {
+            display: inline-block;
+            padding: 7px 14px;
+            font-size: 0.85rem;
+            border: 1px solid var(--border-color);
+            border-radius: 20px;
+            cursor: pointer;
+            background: var(--bg-secondary);
+            color: var(--text-muted);
+            transition: all 0.2s ease;
+            user-select: none;
+        }
+
+        .category-radio-btn input:checked + label {
+            background: var(--accent-light);
+            border-color: var(--accent-color);
+            color: var(--primary-color);
+            font-weight: 600;
+        }
+
+        .btn-submit {
+            width: 100%;
+            background: linear-gradient(135deg, #1e3a8a 0%, #2563eb 100%);
+            color: #ffffff;
+            border: none;
+            padding: 13px 20px;
+            font-size: 1rem;
+            font-weight: 600;
+            border-radius: var(--radius-sm);
+            cursor: pointer;
+            transition: all 0.25s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            box-shadow: 0 4px 10px rgba(37, 99, 235, 0.2);
+        }
+
+        .btn-submit:hover {
+            background: linear-gradient(135deg, #172554 0%, #1d4ed8 100%);
+            box-shadow: 0 6px 16px rgba(37, 99, 235, 0.3);
+            transform: translateY(-1px);
+        }
+
+        .btn-submit:disabled {
+            opacity: 0.65;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        /* Reviews Display Container */
+        .reviews-display-container {
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+        }
+
+        /* Statistics Card */
+        .rating-summary-card {
+            background: linear-gradient(135deg, #eff6ff 0%, #f8fafc 100%);
+            border: 1px solid #dbeafe;
+            border-radius: var(--radius-md);
+            padding: 22px;
+            display: flex;
+            gap: 24px;
+            align-items: center;
+        }
+
+        .rating-big-score {
+            text-align: center;
+            flex: 0 0 130px;
+            border-right: 1px solid #e2e8f0;
+            padding-right: 18px;
+        }
+
+        .score-number {
+            font-size: 2.6rem;
+            font-weight: 800;
+            color: var(--primary-color);
+            line-height: 1;
+        }
+
+        .score-stars {
+            color: var(--star-gold);
+            font-size: 1.1rem;
+            margin: 4px 0;
+        }
+
+        .score-total {
+            font-size: 0.85rem;
+            color: var(--text-subtle);
+        }
+
+        .rating-bars {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+        }
+
+        .bar-row {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 0.85rem;
+        }
+
+        .bar-label {
+            width: 25px;
+            color: var(--text-main);
+            font-weight: 600;
+            text-align: right;
+        }
+
+        .bar-track {
+            flex: 1;
+            height: 8px;
+            background: #e2e8f0;
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        .bar-fill {
+            height: 100%;
+            background: var(--star-gold);
+            border-radius: 4px;
+            transition: width 0.4s ease;
+        }
+
+        .bar-count {
+            width: 28px;
+            color: var(--text-subtle);
+            font-size: 0.8rem;
+        }
+
+        /* Filter and Sort Toolbar */
+        .reviews-toolbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 12px;
+            padding-bottom: 8px;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .filter-buttons {
+            display: flex;
+            gap: 6px;
+            flex-wrap: wrap;
+        }
+
+        .filter-btn {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            padding: 5px 12px;
+            border-radius: 16px;
+            font-size: 0.82rem;
+            font-weight: 500;
+            color: var(--text-muted);
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .filter-btn:hover {
+            background: #e2e8f0;
+        }
+
+        .filter-btn.active {
+            background: var(--primary-color);
+            border-color: var(--primary-color);
+            color: #ffffff;
+        }
+
+        .sort-select {
+            padding: 6px 12px;
+            font-size: 0.85rem;
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-sm);
+            background: #ffffff;
+            color: var(--text-main);
+            cursor: pointer;
+            outline: none;
+        }
+
+        /* Reviews List */
+        .reviews-list {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            max-height: 600px;
+            overflow-y: auto;
+            padding-right: 4px;
+        }
+
+        .reviews-list::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        .reviews-list::-webkit-scrollbar-thumb {
+            background: #cbd5e1;
+            border-radius: 3px;
+        }
+
+        .review-card {
+            background: #ffffff;
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-md);
+            padding: 18px 20px;
+            box-shadow: var(--shadow-sm);
+            transition: box-shadow 0.2s ease, border-color 0.2s ease;
+            animation: fadeIn 0.3s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(6px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .review-card:hover {
+            border-color: #cbd5e1;
+            box-shadow: var(--shadow-md);
+        }
+
+        .review-card-top {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 10px;
+        }
+
+        .reviewer-info {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .avatar-circle {
+            width: 38px;
+            height: 38px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #3b82f6, #1e3a8a);
+            color: #ffffff;
+            font-weight: 700;
+            font-size: 0.95rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-transform: uppercase;
+        }
+
+        .reviewer-name {
+            font-weight: 700;
+            font-size: 0.98rem;
+            color: var(--text-main);
+        }
+
+        .review-date {
+            font-size: 0.8rem;
+            color: var(--text-subtle);
+        }
+
+        .category-badge {
+            font-size: 0.75rem;
+            padding: 3px 9px;
+            border-radius: 12px;
+            font-weight: 600;
+            background: var(--accent-light);
+            color: var(--primary-color);
+        }
+
+        .category-badge.question {
+            background: #fef3c7;
+            color: #92400e;
+        }
+
+        .category-badge.suggestion {
+            background: #dcfce7;
+            color: #166534;
+        }
+
+        .review-rating-stars {
+            color: var(--star-gold);
+            font-size: 0.95rem;
+            margin-bottom: 8px;
+            letter-spacing: 2px;
+        }
+
+        .review-text {
+            font-size: 0.95rem;
+            color: var(--text-muted);
+            line-height: 1.55;
+            margin-bottom: 0;
+        }
+
+        .no-reviews-state {
+            text-align: center;
+            padding: 40px 20px;
+            color: var(--text-subtle);
+        }
+
+        /* Toast Alert */
+        .toast-notification {
+            position: fixed;
+            bottom: 24px;
+            right: 24px;
+            background: #1e293b;
+            color: #ffffff;
+            padding: 14px 22px;
+            border-radius: var(--radius-sm);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 0.95rem;
+            font-weight: 500;
+            transform: translateY(100px);
+            opacity: 0;
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+            z-index: 9999;
+        }
+
+        .toast-notification.show {
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        .toast-notification.success {
+            border-left: 4px solid var(--accent-emerald);
+        }
+
+        .toast-notification.error {
+            border-left: 4px solid #ef4444;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #f1f5f9;
+            border-top: 1px solid var(--border-color);
+            padding: 24px 40px;
+            text-align: center;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 900px) {
+            .content-wrapper {
+                flex-direction: column-reverse;
+                padding: 30px 20px;
+                gap: 30px;
+            }
+
+            .image-column {
+                flex: none;
+                width: 100%;
+                max-width: 380px;
+                margin: 0 auto;
+                position: static;
+            }
+
+            .feedback-section {
+                padding: 35px 20px;
+            }
+
+            .feedback-grid {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+
+            .rating-summary-card {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .rating-big-score {
+                border-right: none;
+                border-bottom: 1px solid #e2e8f0;
+                padding-right: 0;
+                padding-bottom: 14px;
+                width: 100%;
+            }
+
+            .rating-bars {
+                width: 100%;
+            }
+
+            header {
+                padding: 35px 20px;
+            }
+
+            header h1 {
+                font-size: 2.2rem;
+            }
+
+            body {
+                padding: 15px 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <!-- Шапка сторінки -->
+        <header>
+            <h1>Термоси</h1>
+            <p>Ваш надійний супутник для збереження ідеальної температури улюблених напоїв та страв</p>
+            <div class="header-nav">
+                <a href="#about" class="nav-btn">Що таке термос?</a>
+                <a href="#benefits" class="nav-btn">Переваги</a>
+                <a href="#types" class="nav-btn">Види</a>
+                <a href="#rules" class="nav-btn">Правила</a>
+                <a href="#care" class="nav-btn">Догляд</a>
+                <a href="#feedback" class="nav-btn">💬 Відгуки та зв'язок</a>
+            </div>
+        </header>
+
+        <!-- Основний контент із правою колонкою для фото -->
+        <div class="content-wrapper">
+            <!-- Текстова частина -->
+            <main class="text-column">
+                
+                <!-- Що таке термос? -->
+                <section id="about">
+                    <h2>Що таке термос?</h2>
+                    <p>
+                        <strong>Термос</strong> (або вакуумна колба) — це спеціальний посуд із подвійними стінками, призначений для тривалого збереження температури поміщених у нього напоїв або їжі.
+                    </p>
+                    <p>
+                        Принцип його роботи базується на фізичних властивостях вакууму: простір між зовнішньою та внутрішньою стінками відкачується, що практично виключає теплопередачу через теплопровідність та конвекцію. Завдяки цьому гарячі напої залишаються гарячими до 24 годин, а прохолодні напої зберігають освіжаючу прохолоду навіть у спекотний літній день.
+                    </p>
+                </section>
+
+                <!-- Переваги термосів -->
+                <section id="benefits">
+                    <h2>Переваги термосів</h2>
+                    <p>Сучасні термоси мають широкий перелік практичних переваг:</p>
+                    <ul>
+                        <li><strong>Ефективне збереження температури:</strong> підтримує тепло гарячого чаю чи кави взимку та холод лимонаду чи води влітку.</li>
+                        <li><strong>Екологічність:</strong> зменшує використання одноразових паперових і пластикових стаканчиків.</li>
+                        <li><strong>Економія коштів:</strong> дозволяє брати домашні напої та їжу з собою замість постійних покупок у закладах.</li>
+                        <li><strong>Міцність та надійність:</strong> корпуси з високоякісної нержавіючої сталі стійкі до ударів та падінь.</li>
+                        <li><strong>Герметичність:</strong> надійні клапани та кришки запобігають випадковому витіканню рідини в сумці чи рюкзаку.</li>
+                        <li><strong>Зручність у подорожах:</strong> незамінний помічник для туризму, роботи, навчання, тренувань та автоподорожей.</li>
+                    </ul>
+                </section>
+
+                <!-- Види термосів -->
+                <section id="types">
+                    <h2>Види термосів</h2>
+                    <p>Залежно від цільового призначення та конструкції, виділяють кілька основних різновидів:</p>
+                    <ol>
+                        <li><strong>Класичні термоси для напоїв:</strong> мають вузьку горловину для мінімізації тепловтрат та часто комплектуються кришкою-чашкою.</li>
+                        <li><strong>Харчові термоси (ланч-бокси):</strong> оснащені широкою горловиною, що дозволяє зручно накладати та споживати перші й другі страви.</li>
+                        <li><strong>Термокухлі (термочашки):</strong> компактні моделі об'ємом 300–500 мл зі зручною кришкою-поїлкою для швидкого використання однією рукою.</li>
+                        <li><strong>Термопляшки:</strong> стильні та легкі ємності для води та спортивних напоїв під час щоденних прогулянок чи тренувань.</li>
+                        <li><strong>Помпові термоси:</strong> великі стаціонарні моделі об'ємом від 2 до 5 літрів з пневмонасосом, зручні для офісів, пікніків та великих компаній.</li>
+                    </ol>
+                </section>
+
+                <!-- Правила використання -->
+                <section id="rules">
+                    <h2>Правила використання</h2>
+                    <p>Щоб термос служив довго та максимально ефективно зберігав температуру, дотримуйтесь простих правил:</p>
+                    <ul>
+                        <li><strong>Попередній розігрів або охолодження:</strong> перед наповненням залийте на 2–3 хвилини окріп (для гарячого) або крижану воду (для холодного), після чого вилийте її та заповніть термос стравою чи напоєм.</li>
+                        <li><strong>Оптимальний рівень наповнення:</strong> залишайте 1–2 см до нижнього краю пробки, щоб рідина не переливалася при закручуванні.</li>
+                        <li><strong>Щільне закривання:</strong> перевіряйте, щоб різьба була закручена рівно та щільно для забезпечення повної герметичності.</li>
+                        <li><strong>Уникайте небажаних продуктів:</strong> не заливайте газовані напої, сухий лід та швидкопсувні молочні продукти на тривалий час без охолодження.</li>
+                    </ul>
+                </section>
+
+                <!-- Догляд за термосом -->
+                <section id="care">
+                    <h2>Догляд за термосом</h2>
+                    <p>Правильний догляд гарантує гігієнічність та відсутність сторонніх запахів:</p>
+                    <ul>
+                        <li>Мийте термос вручну теплою водою з м'яким миючим засобом та поролоновою губкою або йоржиком.</li>
+                        <li>Не використовуйте абразивні порошки, металеві щітки та хлоровмісні відбілювачі, які можуть пошкодити захисне покриття.</li>
+                        <li>Ретельно промивайте та періодично розбирайте ущільнювальні силіконові кільця й клапани для глибокого очищення.</li>
+                        <li>Зберігайте термос виключно у відкритому або напіввідкритому вигляді, щоб уникнути появи неприємного затхлого запаху.</li>
+                    </ul>
+                    <div class="highlight-box">
+                        <p>💡 <strong>Порада:</strong> Якщо всередині колби з'явився чайний або кавовий наліт, розчиніть столову ложку харчової соди або лимонної кислоти в теплій воді, залиште на кілька годин і промийте теплою водою.</p>
+                    </div>
+                </section>
+
+                <!-- Висновок -->
+                <section>
+                    <h2>Висновок</h2>
+                    <p>
+                        Якісний термос — це практична та вигідна інвестиція у ваш комфорт, здоров'я та збереження навколишнього середовища. Обираючи термос із надійною вакуумною ізоляцією та якісними матеріалами корпусу й колби, ви забезпечуєте себе улюбленими гарячими або прохолодними напоями в будь-який час та за будь-якої погоди.
+                    </p>
+                </section>
+
+            </main>
+
+            <!-- Зображення праворуч від тексту -->
+            <aside class="image-column">
+                <div class="image-card">
+                    <img src="thermos.png" alt="Термос із нержавіючої сталі">
+                    <div class="image-caption">Сучасний вакуумний термос із нержавіючої сталі</div>
+                </div>
+
+                <div class="sidebar-card">
+                    <h3>💡 Поділіться досвідом!</h3>
+                    <p>Маєте улюблений термос або перевірений рецепт термо-чаю? Залиште свій відгук для нашої спільноти.</p>
+                    <a href="#feedback" class="btn-sidebar">Написати відгук ✍️</a>
+                </div>
+            </aside>
+        </div>
+
+        <!-- Секція "Зворотний зв'язок та Відгуки" -->
+        <section class="feedback-section" id="feedback">
+            <div class="feedback-header">
+                <h2>Зворотний зв'язок та Відгуки</h2>
+                <p>Дізнайтеся думку користувачів про використання термосів або поділіться власним досвідом та запитаннями</p>
+            </div>
+
+            <div class="feedback-grid">
+                <!-- Форма зворотного зв'язку -->
+                <div class="feedback-form-card">
+                    <h3>💬 Залишити відгук чи запитання</h3>
+                    <p class="form-subtitle">Ваша думка важлива для нас та інших читачів</p>
+
+                    <form id="feedbackForm">
+                        <div class="form-group">
+                            <label class="form-label">Ваша оцінка <span class="req">*</span></label>
+                            <div class="rating-selector" id="starRatingSelector">
+                                <button type="button" class="star-btn" data-value="1">★</button>
+                                <button type="button" class="star-btn" data-value="2">★</button>
+                                <button type="button" class="star-btn" data-value="3">★</button>
+                                <button type="button" class="star-btn" data-value="4">★</button>
+                                <button type="button" class="star-btn" data-value="5">★</button>
+                                <span class="rating-feedback-text" id="ratingText">5 з 5 (Відмінно)</span>
+                            </div>
+                            <input type="hidden" id="ratingInput" value="5">
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">Тема звернення</label>
+                            <div class="category-radios">
+                                <div class="category-radio-btn">
+                                    <input type="radio" id="cat-review" name="category" value="review" checked>
+                                    <label for="cat-review">⭐️ Відгук</label>
+                                </div>
+                                <div class="category-radio-btn">
+                                    <input type="radio" id="cat-question" name="category" value="question">
+                                    <label for="cat-question">❓ Запитання</label>
+                                </div>
+                                <div class="category-radio-btn">
+                                    <input type="radio" id="cat-suggestion" name="category" value="suggestion">
+                                    <label for="cat-suggestion">💡 Пропозиція</label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label" for="authorName">Ваше ім'я <span class="req">*</span></label>
+                            <input type="text" id="authorName" class="form-control" placeholder="Наприклад: Олена Коваленко" required maxlength="80">
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label" for="authorEmail">Електронна пошта <span style="font-weight: normal; color: var(--text-subtle);">(за бажанням)</span></label>
+                            <input type="email" id="authorEmail" class="form-control" placeholder="name@example.com" maxlength="100">
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label" for="reviewMessage">Ваше повідомлення або відгук <span class="req">*</span></label>
+                            <textarea id="reviewMessage" class="form-control" placeholder="Поділіться враженнями про ваш термос, температурний режим чи поставте запитання..." required maxlength="1500"></textarea>
+                        </div>
+
+                        <button type="submit" class="btn-submit" id="submitBtn">
+                            <span>Надіслати відгук</span> 🚀
+                        </button>
+                    </form>
+                </div>
+
+                <!-- Блок відображення відгуків та статистики -->
+                <div class="reviews-display-container">
+                    <!-- Картка загальної статистики -->
+                    <div class="rating-summary-card">
+                        <div class="rating-big-score">
+                            <div class="score-number" id="avgScore">5.0</div>
+                            <div class="score-stars" id="avgStars">★★★★★</div>
+                            <div class="score-total" id="totalReviewsCount">0 відгуків</div>
+                        </div>
+                        <div class="rating-bars" id="ratingBarsContainer">
+                            <!-- Bars dynamically generated -->
+                        </div>
+                    </div>
+
+                    <!-- Панель фільтрації та сортування -->
+                    <div class="reviews-toolbar">
+                        <div class="filter-buttons" id="filterButtons">
+                            <button class="filter-btn active" data-filter="all">Всі (<span id="count-all">0</span>)</button>
+                            <button class="filter-btn" data-filter="5">5 ★ (<span id="count-5">0</span>)</button>
+                            <button class="filter-btn" data-filter="4">4 ★ (<span id="count-4">0</span>)</button>
+                            <button class="filter-btn" data-filter="3">3 ★ (<span id="count-3">0</span>)</button>
+                        </div>
+
+                        <select id="sortSelect" class="sort-select">
+                            <option value="newest">Спочатку найновіші</option>
+                            <option value="highest">Найвищий рейтинг</option>
+                            <option value="lowest">Найнижчий рейтинг</option>
+                        </select>
+                    </div>
+
+                    <!-- Список карток відгуків -->
+                    <div class="reviews-list" id="reviewsList">
+                        <!-- Review cards dynamically rendered -->
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Підвал сторінки -->
+        <footer>
+            <p>&copy; 2026 Сторінка про термоси. Чиста HTML5/CSS3 верстка та інтерактивний зворотний зв'язок.</p>
+        </footer>
+    </div>
+
+    <!-- Toast Notification -->
+    <div id="toastNotification" class="toast-notification">
+        <span id="toastIcon">✅</span>
+        <span id="toastMessage">Відгук успішно додано! Дякуємо за вашу думку.</span>
+    </div>
+
+    <script>
+        // Initial Default Reviews for Standalone File Mode Fallback
+        const DEFAULT_REVIEWS = [
+            {
+                id: "rev-1",
+                name: "Олександр Мельник",
+                email: "oleksandr.m@example.com",
+                rating: 5,
+                category: "review",
+                categoryLabel: "Відгук про використання",
+                message: "Купив термос із подвійними стінками для гірських походів у Карпати. Навіть при -10°C тримав окріп для чаю більше 18 годин! Зручна кришка-чашка, нічого не протікає в рюкзаку. Рекомендую всім поціновувачам активного відпочинку.",
+                date: "2026-08-25"
+            },
+            {
+                id: "rev-2",
+                name: "Марія Ковальчук",
+                email: "mariya.kov@example.com",
+                rating: 5,
+                category: "review",
+                categoryLabel: "Відгук про використання",
+                message: "Використовую харчовий термос для обідів на роботу. Суп та гарніри залишаються гарячими до самого обіду. Дуже легко мити завдяки широкій горловині. Порада з лимонною кислотою для очищення від нальоту — просто знахідка!",
+                date: "2026-08-22"
+            },
+            {
+                id: "rev-3",
+                name: "Богдан Шевченко",
+                email: "b.shevchenko@example.com",
+                rating: 4,
+                category: "suggestion",
+                categoryLabel: "Пропозиція / Порада",
+                message: "Чудова стаття! Було б корисно додати ще рекомендації щодо вибору об'єму термоса під різні види напоїв (наприклад, для одинаків та великих сімей). Загалом інформація подана структуровано і зрозуміло.",
+                date: "2026-08-18"
+            },
+            {
+                id: "rev-4",
+                name: "Олена Дмитрук",
+                email: "olena.d@example.com",
+                rating: 5,
+                category: "review",
+                categoryLabel: "Відгук про використання",
+                message: "Термокружка стала моїм щоденним рятівником у дорозі на роботу в авто. Ідеально підходить під автомобільний підстаканник і тримає капучино гарячим протягом усього ранку.",
+                date: "2026-08-15"
+            }
+        ];
+
+        let reviewsData = [];
+        let currentFilter = 'all';
+        let currentSort = 'newest';
+
+        const ratingLabels = {
+            1: "1 з 5 (Погано)",
+            2: "2 з 5 (Задовільно)",
+            3: "3 з 5 (Нормально)",
+            4: "4 з 5 (Добре)",
+            5: "5 з 5 (Відмінно)"
+        };
+
+        // DOM Elements
+        const feedbackForm = document.getElementById('feedbackForm');
+        const starRatingSelector = document.getElementById('starRatingSelector');
+        const ratingInput = document.getElementById('ratingInput');
+        const ratingText = document.getElementById('ratingText');
+        const starButtons = starRatingSelector.querySelectorAll('.star-btn');
+        const reviewsList = document.getElementById('reviewsList');
+        const avgScore = document.getElementById('avgScore');
+        const avgStars = document.getElementById('avgStars');
+        const totalReviewsCount = document.getElementById('totalReviewsCount');
+        const ratingBarsContainer = document.getElementById('ratingBarsContainer');
+        const filterButtonsContainer = document.getElementById('filterButtons');
+        const sortSelect = document.getElementById('sortSelect');
+        const submitBtn = document.getElementById('submitBtn');
+        const toastNotification = document.getElementById('toastNotification');
+        const toastMessage = document.getElementById('toastMessage');
+        const toastIcon = document.getElementById('toastIcon');
+
+        // Initialize Star Rating Selector
+        function initStarRating() {
+            let selectedRating = parseInt(ratingInput.value, 10) || 5;
+
+            function updateStarDisplay(val) {
+                starButtons.forEach(btn => {
+                    const btnVal = parseInt(btn.getAttribute('data-value'), 10);
+                    if (btnVal <= val) {
+                        btn.classList.add('active');
+                    } else {
+                        btn.classList.remove('active');
+                    }
+                });
+                ratingText.textContent = ratingLabels[val] || `${val} з 5`;
+            }
+
+            starButtons.forEach(btn => {
+                const val = parseInt(btn.getAttribute('data-value'), 10);
+                btn.addEventListener('mouseenter', () => {
+                    starButtons.forEach(b => {
+                        const bVal = parseInt(b.getAttribute('data-value'), 10);
+                        if (bVal <= val) {
+                            b.classList.add('hovered');
+                        } else {
+                            b.classList.remove('hovered');
+                        }
+                    });
+                    ratingText.textContent = ratingLabels[val] || `${val} з 5`;
+                });
+
+                btn.addEventListener('mouseleave', () => {
+                    starButtons.forEach(b => b.classList.remove('hovered'));
+                    updateStarDisplay(selectedRating);
+                });
+
+                btn.addEventListener('click', () => {
+                    selectedRating = val;
+                    ratingInput.value = val;
+                    updateStarDisplay(selectedRating);
+                });
+            });
+
+            updateStarDisplay(selectedRating);
+        }
+
+        // Show Toast Notification
+        function showToast(message, isSuccess = true) {
+            toastMessage.textContent = message;
+            toastIcon.textContent = isSuccess ? '✅' : '⚠️';
+            toastNotification.className = `toast-notification show ${isSuccess ? 'success' : 'error'}`;
+
+            setTimeout(() => {
+                toastNotification.classList.remove('show');
+            }, 4000);
+        }
+
+        // Render Star String helper
+        function renderStars(rating) {
+            return '★'.repeat(rating) + '☆'.repeat(5 - rating);
+        }
+
+        // Format Date to Ukrainian locale format
+        function formatDate(dateStr) {
+            try {
+                const d = new Date(dateStr);
+                if (isNaN(d.getTime())) return dateStr;
+                return d.toLocaleDateString('uk-UA', { day: 'numeric', month: 'long', year: 'numeric' });
+            } catch {
+                return dateStr;
+            }
+        }
+
+        // Update Statistics (Average, Counts, Progress Bars)
+        function updateStatistics() {
+            const total = reviewsData.length;
+            const countAllEl = document.getElementById('count-all');
+            if (countAllEl) countAllEl.textContent = total;
+
+            const counts = { 5: 0, 4: 0, 3: 0, 2: 0, 1: 0 };
+            let sum = 0;
+
+            reviewsData.forEach(rev => {
+                const r = Math.min(5, Math.max(1, parseInt(rev.rating, 10) || 5));
+                counts[r] = (counts[r] || 0) + 1;
+                sum += r;
+            });
+
+            // Update individual filter counts
+            [5, 4, 3].forEach(star => {
+                const el = document.getElementById(`count-${star}`);
+                if (el) el.textContent = counts[star] || 0;
+            });
+
+            const avg = total > 0 ? (sum / total).toFixed(1) : '5.0';
+            avgScore.textContent = avg;
+            avgStars.textContent = renderStars(Math.round(parseFloat(avg)));
+
+            const declension = (n) => {
+                if (n % 10 === 1 && n % 100 !== 11) return `${n} відгук`;
+                if ([2, 3, 4].includes(n % 10) && ![12, 13, 14].includes(n % 100)) return `${n} відгуки`;
+                return `${n} відгуків`;
+            };
+            totalReviewsCount.textContent = declension(total);
+
+            // Render bars
+            ratingBarsContainer.innerHTML = '';
+            for (let i = 5; i >= 1; i--) {
+                const count = counts[i] || 0;
+                const percent = total > 0 ? Math.round((count / total) * 100) : 0;
+
+                const row = document.createElement('div');
+                row.className = 'bar-row';
+                row.innerHTML = `
+                    <span class="bar-label">${i}★</span>
+                    <div class="bar-track">
+                        <div class="bar-fill" style="width: ${percent}%"></div>
+                    </div>
+                    <span class="bar-count">${count}</span>
+                `;
+                ratingBarsContainer.appendChild(row);
+            }
+        }
+
+        // Render Reviews List with active filter and sorting
+        function renderReviews() {
+            let filtered = [...reviewsData];
+
+            if (currentFilter !== 'all') {
+                const filterNum = parseInt(currentFilter, 10);
+                filtered = filtered.filter(item => parseInt(item.rating, 10) === filterNum);
+            }
+
+            if (currentSort === 'newest') {
+                filtered.sort((a, b) => new Date(b.date || 0) - new Date(a.date || 0));
+            } else if (currentSort === 'highest') {
+                filtered.sort((a, b) => (b.rating || 0) - (a.rating || 0));
+            } else if (currentSort === 'lowest') {
+                filtered.sort((a, b) => (a.rating || 0) - (b.rating || 0));
+            }
+
+            reviewsList.innerHTML = '';
+
+            if (filtered.length === 0) {
+                reviewsList.innerHTML = `
+                    <div class="no-reviews-state">
+                        <p>Відгуків у цій категорії поки що немає.</p>
+                        <p style="font-size: 0.9rem;">Будьте першим, хто залишить свій відгук!</p>
+                    </div>
+                `;
+                return;
+            }
+
+            filtered.forEach(rev => {
+                const card = document.createElement('div');
+                card.className = 'review-card';
+
+                const initial = (rev.name || 'А').trim().charAt(0);
+                const categoryClass = rev.category === 'question' ? 'question' : (rev.category === 'suggestion' ? 'suggestion' : '');
+
+                card.innerHTML = `
+                    <div class="review-card-top">
+                        <div class="reviewer-info">
+                            <div class="avatar-circle">${escapeHtml(initial)}</div>
+                            <div>
+                                <div class="reviewer-name">${escapeHtml(rev.name)}</div>
+                                <div class="review-date">${formatDate(rev.date)}</div>
+                            </div>
+                        </div>
+                        <span class="category-badge ${categoryClass}">${escapeHtml(rev.categoryLabel || 'Відгук')}</span>
+                    </div>
+                    <div class="review-rating-stars">${renderStars(parseInt(rev.rating, 10) || 5)}</div>
+                    <p class="review-text">${escapeHtml(rev.message)}</p>
+                `;
+                reviewsList.appendChild(card);
+            });
+        }
+
+        // Helper to escape HTML characters
+        function escapeHtml(text) {
+            if (!text) return '';
+            return String(text)
+                .replace(/&/g, "&amp;")
+                .replace(/</g, "&lt;")
+                .replace(/>/g, "&gt;")
+                .replace(/"/g, "&quot;")
+                .replace(/'/g, "&#039;");
+        }
+
+        // Load Reviews from API or LocalStorage/Defaults
+        async function loadReviews() {
+            try {
+                const response = await fetch('/api/reviews');
+                if (response.ok) {
+                    const data = await response.json();
+                    reviewsData = Array.isArray(data) ? data : DEFAULT_REVIEWS;
+                } else {
+                    throw new Error('API not available');
+                }
+            } catch (err) {
+                console.log('Using local reviews storage fallback:', err.message);
+                const saved = localStorage.getItem('termos_reviews');
+                if (saved) {
+                    try {
+                        reviewsData = JSON.parse(saved);
+                    } catch {
+                        reviewsData = [...DEFAULT_REVIEWS];
+                    }
+                } else {
+                    reviewsData = [...DEFAULT_REVIEWS];
+                }
+            }
+
+            updateStatistics();
+            renderReviews();
+        }
+
+        // Handle Form Submission
+        feedbackForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+
+            const name = document.getElementById('authorName').value.trim();
+            const email = document.getElementById('authorEmail').value.trim();
+            const rating = parseInt(document.getElementById('ratingInput').value, 10) || 5;
+            const categoryEl = document.querySelector('input[name="category"]:checked');
+            const category = categoryEl ? categoryEl.value : 'review';
+            const message = document.getElementById('reviewMessage').value.trim();
+
+            if (!name || !message) {
+                showToast("Будь ласка, заповніть ваше ім'я та повідомлення", false);
+                return;
+            }
+
+            const categoryLabels = {
+                'review': "Відгук про використання",
+                'question': "Запитання консультанту",
+                'suggestion': "Пропозиція / Порада"
+            };
+
+            const payload = {
+                name,
+                email,
+                rating,
+                category,
+                categoryLabel: categoryLabels[category] || "Відгук",
+                message,
+                date: new Date().toISOString().split('T')[0]
+            };
+
+            submitBtn.disabled = true;
+            submitBtn.innerHTML = `<span>Надсилання...</span> ⏳`;
+
+            let savedSuccessfully = false;
+
+            try {
+                const response = await fetch('/api/reviews', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(payload)
+                });
+
+                if (response.ok) {
+                    const resData = await response.json();
+                    const newRev = resData.review || payload;
+                    reviewsData.unshift(newRev);
+                    savedSuccessfully = true;
+                } else {
+                    throw new Error('Failed to post to API');
+                }
+            } catch (err) {
+                console.log('Saving locally via fallback:', err.message);
+                const localRev = {
+                    id: 'rev-' + Date.now(),
+                    ...payload
+                };
+                reviewsData.unshift(localRev);
+                try {
+                    localStorage.setItem('termos_reviews', JSON.stringify(reviewsData));
+                } catch (e) {
+                    console.error('LocalStorage write error', e);
+                }
+                savedSuccessfully = true;
+            }
+
+            submitBtn.disabled = false;
+            submitBtn.innerHTML = `<span>Надіслати відгук</span> 🚀`;
+
+            if (savedSuccessfully) {
+                feedbackForm.reset();
+                document.getElementById('cat-review').checked = true;
+                document.getElementById('ratingInput').value = '5';
+                initStarRating();
+
+                updateStatistics();
+                renderReviews();
+                showToast("Ваш відгук успішно додано! Дякуємо за активність.");
+
+                reviewsList.scrollTo({ top: 0, behavior: 'smooth' });
+            }
+        });
+
+        // Filter Buttons handling
+        filterButtonsContainer.addEventListener('click', (e) => {
+            const btn = e.target.closest('.filter-btn');
+            if (!btn) return;
+
+            filterButtonsContainer.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+
+            currentFilter = btn.getAttribute('data-filter');
+            renderReviews();
+        });
+
+        // Sort Select handling
+        sortSelect.addEventListener('change', (e) => {
+            currentSort = e.target.value;
+            renderReviews();
+        });
+
+        // Initialization on Load
+        document.addEventListener('DOMContentLoaded', () => {
+            initStarRating();
+            loadReviews();
+        });
+    </script>
+</body>
+</html>
