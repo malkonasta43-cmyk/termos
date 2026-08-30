@@ -1,0 +1,31 @@
+# Git metadata (Git ignores .git by default)
+.git/
+
+# Archives & temporary archives
+*.rar
+*.zip
+*.7z
+*.tar.gz
+
+# OS Generated files
+Thumbs.db
+Thumbs.db:encryptable
+ehthumbs.db
+ehthumbs_vista.db
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+desktop.ini
+
+# Node.js dependencies and logs
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Log & temp files
+*.log
+*.tmp
+*.bak
