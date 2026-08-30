@@ -4,29 +4,51 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Термоси — Все про збереження тепла та свіжості</title>
+    <!-- Google Fonts: Plus Jakarta Sans -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary-color: #1e3a8a;
-            --primary-hover: #1e40af;
-            --accent-color: #3b82f6;
-            --accent-light: #eff6ff;
+            --primary: #1e3a8a;
+            --primary-dark: #0f172a;
+            --primary-light: #3b82f6;
+            --primary-hover: #1d4ed8;
+            --accent-cyan: #06b6d4;
             --accent-emerald: #10b981;
-            --text-main: #1f2937;
-            --text-muted: #4b5563;
-            --text-subtle: #6b7280;
-            --bg-page: #f8fafc;
+            --accent-amber: #f59e0b;
+            --accent-rose: #f43f5e;
+            
+            --bg-body: #f1f5f9;
             --bg-card: #ffffff;
-            --bg-secondary: #f1f5f9;
+            --bg-card-subtle: #f8fafc;
+            --bg-glass: rgba(255, 255, 255, 0.85);
+            
+            --text-title: #0f172a;
+            --text-main: #334155;
+            --text-muted: #64748b;
+            --text-light: #94a3b8;
+            
             --border-color: #e2e8f0;
             --border-focus: #3b82f6;
+            
             --star-gold: #f59e0b;
-            --star-gray: #d1d5db;
-            --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.08);
-            --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.06);
-            --shadow-lg: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
+            --star-inactive: #cbd5e1;
+            
+            --shadow-xs: 0 1px 2px rgba(0, 0, 0, 0.05);
+            --shadow-sm: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -2px rgba(0, 0, 0, 0.05);
+            --shadow-md: 0 10px 15px -3px rgba(0, 0, 0, 0.07), 0 4px 6px -4px rgba(0, 0, 0, 0.05);
+            --shadow-lg: 0 20px 25px -5px rgba(0, 0, 0, 0.08), 0 8px 10px -6px rgba(0, 0, 0, 0.04);
+            --shadow-xl: 0 25px 50px -12px rgba(30, 58, 138, 0.18);
+            
             --radius-sm: 8px;
-            --radius-md: 12px;
-            --radius-lg: 18px;
+            --radius-md: 14px;
+            --radius-lg: 20px;
+            --radius-xl: 28px;
+            --radius-full: 9999px;
+            
+            --transition-fast: 0.15s ease;
+            --transition-normal: 0.25s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
         * {
@@ -40,79 +62,163 @@
         }
 
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-            background-color: var(--bg-page);
+            font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background-color: var(--bg-body);
+            background-image: 
+                radial-gradient(at 0% 0%, rgba(59, 130, 246, 0.08) 0px, transparent 50%),
+                radial-gradient(at 100% 100%, rgba(6, 182, 212, 0.06) 0px, transparent 50%);
+            background-attachment: fixed;
             color: var(--text-main);
-            line-height: 1.65;
-            padding: 40px 20px;
+            line-height: 1.7;
+            padding: 30px 16px 60px 16px;
+            min-height: 100vh;
         }
 
         .container {
-            max-width: 1160px;
+            max-width: 1200px;
             margin: 0 auto;
             background: var(--bg-card);
-            border-radius: var(--radius-lg);
-            box-shadow: var(--shadow-lg);
-            border: 1px solid var(--border-color);
+            border-radius: var(--radius-xl);
+            box-shadow: var(--shadow-xl);
+            border: 1px solid rgba(226, 232, 240, 0.8);
             overflow: hidden;
-        }
-
-        /* Header */
-        header {
-            background: linear-gradient(135deg, #1e3a8a 0%, #2563eb 100%);
-            color: #ffffff;
-            padding: 45px 40px;
-            text-align: center;
             position: relative;
         }
 
+        /* =========================================
+           HERO HEADER
+           ========================================= */
+        header {
+            position: relative;
+            background: linear-gradient(135deg, #0f172a 0%, #1e3a8a 50%, #2563eb 100%);
+            color: #ffffff;
+            padding: 60px 40px 50px 40px;
+            text-align: center;
+            overflow: hidden;
+        }
+
+        header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.12) 0%, transparent 60%);
+            animation: pulseGlow 12s infinite alternate ease-in-out;
+            pointer-events: none;
+        }
+
+        @keyframes pulseGlow {
+            0% { transform: scale(1) rotate(0deg); }
+            100% { transform: scale(1.15) rotate(15deg); }
+        }
+
+        .hero-badge-container {
+            display: inline-flex;
+            gap: 12px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+            justify-content: center;
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero-badge {
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.25);
+            padding: 6px 16px;
+            border-radius: var(--radius-full);
+            font-size: 0.85rem;
+            font-weight: 600;
+            letter-spacing: 0.3px;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        }
+
         header h1 {
-            font-size: 2.75rem;
+            font-size: 3.2rem;
             font-weight: 800;
-            letter-spacing: -0.5px;
-            margin-bottom: 8px;
+            letter-spacing: -1px;
+            line-height: 1.15;
+            margin-bottom: 14px;
+            position: relative;
+            z-index: 2;
+            background: linear-gradient(180deg, #ffffff 30%, #bfdbfe 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
 
         header p {
-            font-size: 1.15rem;
+            font-size: 1.2rem;
             opacity: 0.92;
-            max-width: 650px;
-            margin: 0 auto 16px auto;
-            font-weight: 300;
+            max-width: 680px;
+            margin: 0 auto 28px auto;
+            font-weight: 400;
+            position: relative;
+            z-index: 2;
+            line-height: 1.6;
+            color: #e2e8f0;
         }
 
         .header-nav {
             display: flex;
             justify-content: center;
             gap: 10px;
-            margin-top: 15px;
+            margin-top: 10px;
             flex-wrap: wrap;
+            position: relative;
+            z-index: 2;
         }
 
         .nav-btn {
-            background: rgba(255, 255, 255, 0.18);
+            background: rgba(255, 255, 255, 0.12);
             color: #ffffff;
             text-decoration: none;
-            padding: 8px 18px;
-            border-radius: 30px;
-            font-size: 0.9rem;
-            font-weight: 500;
+            padding: 9px 20px;
+            border-radius: var(--radius-full);
+            font-size: 0.92rem;
+            font-weight: 600;
             backdrop-filter: blur(8px);
-            border: 1px solid rgba(255, 255, 255, 0.3);
-            transition: all 0.2s ease;
+            -webkit-backdrop-filter: blur(8px);
+            border: 1px solid rgba(255, 255, 255, 0.25);
+            transition: all var(--transition-normal);
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
         }
 
         .nav-btn:hover {
-            background: rgba(255, 255, 255, 0.3);
-            transform: translateY(-1px);
+            background: rgba(255, 255, 255, 0.28);
+            border-color: rgba(255, 255, 255, 0.5);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
         }
 
-        /* Main Content Layout */
+        .nav-btn.btn-cta-nav {
+            background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+            color: #ffffff;
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            box-shadow: 0 4px 15px rgba(245, 158, 11, 0.35);
+        }
+
+        .nav-btn.btn-cta-nav:hover {
+            background: linear-gradient(135deg, #fbbf24 0%, #b45309 100%);
+            box-shadow: 0 6px 25px rgba(245, 158, 11, 0.5);
+        }
+
+        /* =========================================
+           MAIN LAYOUT
+           ========================================= */
         .content-wrapper {
             display: flex;
             flex-direction: row;
             gap: 40px;
-            padding: 45px 40px;
+            padding: 50px 45px;
             align-items: flex-start;
         }
 
@@ -122,306 +228,536 @@
         }
 
         .image-column {
-            flex: 0 0 340px;
+            flex: 0 0 350px;
             position: sticky;
-            top: 30px;
+            top: 25px;
             display: flex;
             flex-direction: column;
-            gap: 20px;
-            align-items: center;
+            gap: 24px;
         }
 
-        .image-card, .sidebar-card {
-            width: 100%;
+        /* =========================================
+           SECTIONS & CARDS STYLING
+           ========================================= */
+        section.info-section {
+            margin-bottom: 45px;
             background: #ffffff;
-            border-radius: var(--radius-md);
-            padding: 20px;
-            border: 1px solid var(--border-color);
-            box-shadow: var(--shadow-md);
-            text-align: center;
-            transition: transform 0.25s ease, box-shadow 0.25s ease;
         }
 
-        .image-card:hover, .sidebar-card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 12px 28px rgba(0, 0, 0, 0.12);
+        section.info-section:last-child {
+            margin-bottom: 0;
         }
 
-        .image-card img {
-            width: 100%;
-            max-width: 280px;
-            height: auto;
-            border-radius: 8px;
-            display: block;
-            margin: 0 auto;
-            object-fit: contain;
-        }
-
-        .image-caption {
-            margin-top: 14px;
-            font-size: 0.9rem;
-            color: var(--text-muted);
-            font-style: italic;
-        }
-
-        .sidebar-card {
-            text-align: left;
-            background: linear-gradient(180deg, #f8fafc 0%, #eff6ff 100%);
-        }
-
-        .sidebar-card h3 {
-            font-size: 1.1rem;
-            color: var(--primary-color);
-            margin-bottom: 10px;
+        .section-header-wrap {
             display: flex;
             align-items: center;
-            gap: 8px;
+            gap: 12px;
+            margin-bottom: 18px;
         }
 
-        .sidebar-card p {
-            font-size: 0.9rem;
-            color: var(--text-muted);
-            margin-bottom: 12px;
-        }
-
-        .sidebar-card .btn-sidebar {
-            display: inline-block;
-            width: 100%;
-            text-align: center;
-            background: var(--accent-color);
-            color: #ffffff;
-            text-decoration: none;
-            padding: 10px 16px;
-            border-radius: var(--radius-sm);
-            font-weight: 600;
-            font-size: 0.9rem;
-            transition: background 0.2s ease;
-        }
-
-        .sidebar-card .btn-sidebar:hover {
-            background: var(--primary-hover);
-        }
-
-        /* Content Sections */
-        section {
-            margin-bottom: 35px;
-            background: #ffffff;
-        }
-
-        section:last-child {
-            margin-bottom: 0;
+        .section-icon-badge {
+            width: 42px;
+            height: 42px;
+            border-radius: var(--radius-md);
+            background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%);
+            color: var(--primary-light);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.25rem;
+            box-shadow: var(--shadow-xs);
+            flex-shrink: 0;
         }
 
         h2 {
-            font-size: 1.5rem;
-            color: var(--primary-color);
-            margin-bottom: 14px;
-            position: relative;
-            padding-left: 14px;
-            border-left: 4px solid var(--accent-color);
+            font-size: 1.65rem;
+            font-weight: 700;
+            color: var(--text-title);
+            letter-spacing: -0.5px;
         }
 
         p {
-            color: var(--text-muted);
-            margin-bottom: 12px;
-            font-size: 1.025rem;
-        }
-
-        /* Lists styling */
-        ul, ol {
-            padding-left: 24px;
-            margin-top: 10px;
-            margin-bottom: 14px;
-            color: var(--text-muted);
-        }
-
-        li {
-            margin-bottom: 10px;
-            padding-left: 4px;
-            font-size: 1rem;
-        }
-
-        li strong {
             color: var(--text-main);
+            margin-bottom: 16px;
+            font-size: 1.05rem;
+            line-height: 1.75;
         }
 
-        ul {
-            list-style-type: disc;
+        /* Hero Text Callout */
+        .hero-explanation-card {
+            background: linear-gradient(145deg, #f8fafc 0%, #f1f5f9 100%);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-lg);
+            padding: 26px;
+            margin-top: 15px;
+            box-shadow: var(--shadow-sm);
+            position: relative;
         }
 
-        ul li::marker {
-            color: var(--accent-color);
+        .hero-explanation-card::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 20px;
+            bottom: 20px;
+            width: 4px;
+            background: linear-gradient(to bottom, var(--primary-light), var(--accent-cyan));
+            border-radius: 0 4px 4px 0;
+        }
+
+        /* Features Grid (Переваги) */
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 18px;
+            margin-top: 20px;
+        }
+
+        .feature-card {
+            background: #ffffff;
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-md);
+            padding: 22px 20px;
+            box-shadow: var(--shadow-xs);
+            transition: all var(--transition-normal);
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-4px);
+            border-color: #cbd5e1;
+            box-shadow: var(--shadow-md);
+        }
+
+        .feature-icon-title {
+            display: flex;
+            align-items: center;
+            gap: 10px;
             font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--primary-dark);
         }
 
-        ol {
-            list-style-type: decimal;
+        .feature-icon {
+            font-size: 1.35rem;
         }
 
-        ol li::marker {
-            color: var(--primary-color);
+        .feature-desc {
+            font-size: 0.95rem;
+            color: var(--text-muted);
+            line-height: 1.55;
+            margin-bottom: 0;
+        }
+
+        /* Types List Cards (Види) */
+        .types-container {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            margin-top: 20px;
+        }
+
+        .type-item-card {
+            background: #ffffff;
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-md);
+            padding: 20px 24px;
+            display: flex;
+            gap: 20px;
+            align-items: center;
+            transition: all var(--transition-normal);
+            box-shadow: var(--shadow-xs);
+        }
+
+        .type-item-card:hover {
+            transform: translateX(4px);
+            border-color: #cbd5e1;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .type-number {
+            width: 38px;
+            height: 38px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+            color: #ffffff;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.05rem;
+            flex-shrink: 0;
+            box-shadow: 0 4px 10px rgba(37, 99, 235, 0.25);
+        }
+
+        .type-details {
+            flex: 1;
+        }
+
+        .type-header-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 6px;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .type-title {
+            font-size: 1.08rem;
+            font-weight: 700;
+            color: var(--text-title);
+        }
+
+        .type-badge {
+            background: #eff6ff;
+            color: var(--primary-light);
+            font-size: 0.8rem;
+            font-weight: 600;
+            padding: 3px 10px;
+            border-radius: var(--radius-full);
+            border: 1px solid #dbeafe;
+        }
+
+        .type-desc {
+            font-size: 0.95rem;
+            color: var(--text-muted);
+            margin-bottom: 0;
+            line-height: 1.55;
+        }
+
+        /* Rules & Care Cards */
+        .rules-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 16px;
+            margin-top: 18px;
+        }
+
+        .rule-card {
+            background: #f8fafc;
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-md);
+            padding: 18px 20px;
+            display: flex;
+            gap: 14px;
+            align-items: flex-start;
+        }
+
+        .rule-icon {
+            font-size: 1.25rem;
+            flex-shrink: 0;
+            margin-top: 2px;
+        }
+
+        .rule-text {
+            font-size: 0.95rem;
+            color: var(--text-main);
+            margin-bottom: 0;
+            line-height: 1.55;
+        }
+
+        .rule-text strong {
+            color: var(--text-title);
+            display: block;
+            margin-bottom: 2px;
+        }
+
+        /* Pro-tip Highlight Box */
+        .pro-tip-box {
+            background: linear-gradient(135deg, #ecfdf5 0%, #f0fdf4 100%);
+            border: 1px solid #a7f3d0;
+            border-radius: var(--radius-md);
+            padding: 20px 24px;
+            margin-top: 22px;
+            display: flex;
+            gap: 16px;
+            align-items: center;
+            box-shadow: 0 4px 12px rgba(16, 185, 129, 0.08);
+        }
+
+        .pro-tip-icon {
+            font-size: 2rem;
+            flex-shrink: 0;
+        }
+
+        .pro-tip-content p {
+            color: #065f46;
+            margin-bottom: 0;
+            font-size: 0.98rem;
+            font-weight: 500;
+        }
+
+        .pro-tip-content strong {
+            color: #047857;
             font-weight: 700;
         }
 
-        .highlight-box {
-            background-color: var(--accent-light);
-            border-radius: var(--radius-md);
-            padding: 18px 22px;
-            border-left: 4px solid var(--accent-color);
-            margin-top: 15px;
+        /* =========================================
+           SIDEBAR SHOWCASE
+           ========================================= */
+        .showcase-card {
+            background: #ffffff;
+            border-radius: var(--radius-lg);
+            padding: 24px;
+            border: 1px solid var(--border-color);
+            box-shadow: var(--shadow-md);
+            text-align: center;
+            transition: all var(--transition-normal);
+            position: relative;
         }
 
-        .highlight-box p {
-            color: #1e40af;
-            margin-bottom: 0;
-            font-weight: 500;
+        .showcase-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-lg);
+            border-color: #cbd5e1;
+        }
+
+        .showcase-img-wrap {
+            position: relative;
+            background: radial-gradient(circle, #f1f5f9 0%, #ffffff 80%);
+            border-radius: var(--radius-md);
+            padding: 24px 16px;
+            margin-bottom: 16px;
+        }
+
+        .showcase-card img {
+            width: 100%;
+            max-width: 260px;
+            height: auto;
+            display: block;
+            margin: 0 auto;
+            object-fit: contain;
+            filter: drop-shadow(0 15px 25px rgba(15, 23, 42, 0.15));
+            transition: transform var(--transition-normal);
+        }
+
+        .showcase-card:hover img {
+            transform: scale(1.03);
+        }
+
+        .showcase-specs {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            margin-top: 14px;
+        }
+
+        .spec-pill {
+            background: #f8fafc;
+            border: 1px solid var(--border-color);
+            padding: 7px 12px;
+            border-radius: var(--radius-sm);
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--text-main);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .spec-pill span.val {
+            color: var(--primary-light);
+        }
+
+        .sidebar-action-card {
+            background: linear-gradient(135deg, #1e3a8a 0%, #2563eb 100%);
+            color: #ffffff;
+            border-radius: var(--radius-lg);
+            padding: 26px 22px;
+            box-shadow: var(--shadow-lg);
+            text-align: center;
+        }
+
+        .sidebar-action-card h3 {
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .sidebar-action-card p {
+            font-size: 0.92rem;
+            color: #e2e8f0;
+            margin-bottom: 18px;
+            line-height: 1.5;
+        }
+
+        .btn-sidebar-cta {
+            display: block;
+            width: 100%;
+            background: #ffffff;
+            color: var(--primary);
+            font-weight: 700;
+            font-size: 0.95rem;
+            text-decoration: none;
+            padding: 12px 18px;
+            border-radius: var(--radius-md);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            transition: all var(--transition-normal);
+        }
+
+        .btn-sidebar-cta:hover {
+            background: #f8fafc;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+            color: var(--primary-dark);
         }
 
         /* =========================================
            FEEDBACK & REVIEWS SECTION
            ========================================= */
         .feedback-section {
-            background: #ffffff;
-            border-top: 2px solid var(--border-color);
-            padding: 50px 40px;
+            background: linear-gradient(180deg, #f8fafc 0%, #ffffff 100%);
+            border-top: 1px solid var(--border-color);
+            padding: 60px 45px;
+            position: relative;
         }
 
         .feedback-header {
             text-align: center;
-            margin-bottom: 35px;
+            margin-bottom: 45px;
+        }
+
+        .feedback-header-badge {
+            display: inline-block;
+            background: #eff6ff;
+            color: var(--primary-light);
+            font-size: 0.85rem;
+            font-weight: 700;
+            padding: 6px 16px;
+            border-radius: var(--radius-full);
+            margin-bottom: 12px;
+            border: 1px solid #dbeafe;
         }
 
         .feedback-header h2 {
-            border-left: none;
-            padding-left: 0;
-            font-size: 2rem;
-            color: var(--primary-color);
-            display: inline-block;
-            position: relative;
-        }
-
-        .feedback-header h2::after {
-            content: '';
-            display: block;
-            width: 60px;
-            height: 4px;
-            background: var(--accent-color);
-            margin: 8px auto 0;
-            border-radius: 2px;
+            font-size: 2.2rem;
+            font-weight: 800;
+            color: var(--text-title);
+            margin-bottom: 10px;
         }
 
         .feedback-header p {
-            font-size: 1.05rem;
+            font-size: 1.1rem;
             color: var(--text-muted);
-            max-width: 600px;
-            margin: 10px auto 0;
+            max-width: 620px;
+            margin: 0 auto;
         }
 
         .feedback-grid {
             display: grid;
-            grid-template-columns: 1fr 1.35fr;
-            gap: 35px;
+            grid-template-columns: 1fr 1.3fr;
+            gap: 40px;
             align-items: start;
         }
 
-        /* Feedback Form Box */
+        /* Form Card */
         .feedback-form-card {
             background: #ffffff;
             border: 1px solid var(--border-color);
-            border-radius: var(--radius-md);
-            padding: 28px;
+            border-radius: var(--radius-lg);
+            padding: 32px;
             box-shadow: var(--shadow-md);
         }
 
         .feedback-form-card h3 {
-            font-size: 1.25rem;
-            color: var(--primary-color);
+            font-size: 1.35rem;
+            font-weight: 700;
+            color: var(--text-title);
             margin-bottom: 6px;
             display: flex;
             align-items: center;
-            gap: 8px;
+            gap: 10px;
         }
 
-        .feedback-form-card .form-subtitle {
-            font-size: 0.9rem;
-            color: var(--text-subtle);
-            margin-bottom: 20px;
+        .form-subtitle {
+            font-size: 0.92rem;
+            color: var(--text-muted);
+            margin-bottom: 24px;
         }
 
         .form-group {
-            margin-bottom: 18px;
+            margin-bottom: 20px;
         }
 
         .form-label {
             display: block;
-            font-size: 0.9rem;
-            font-weight: 600;
-            color: var(--text-main);
-            margin-bottom: 6px;
+            font-size: 0.92rem;
+            font-weight: 700;
+            color: var(--text-title);
+            margin-bottom: 8px;
         }
 
         .form-label span.req {
-            color: #ef4444;
+            color: var(--accent-rose);
         }
 
         .form-control {
             width: 100%;
-            padding: 10px 14px;
-            font-size: 0.95rem;
+            padding: 12px 16px;
+            font-size: 0.98rem;
+            font-family: inherit;
             border: 1.5px solid var(--border-color);
-            border-radius: var(--radius-sm);
+            border-radius: var(--radius-md);
             background: #ffffff;
             color: var(--text-main);
-            transition: all 0.2s ease;
-            font-family: inherit;
+            transition: all var(--transition-normal);
         }
 
         .form-control:focus {
             outline: none;
             border-color: var(--border-focus);
-            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.15);
+            box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.12);
         }
 
         textarea.form-control {
             resize: vertical;
-            min-height: 105px;
+            min-height: 110px;
         }
 
-        /* Interactive Star Rating Selector */
-        .rating-selector {
+        /* Interactive Star Selector */
+        .rating-selector-wrap {
             display: flex;
             align-items: center;
             gap: 6px;
-            margin-top: 4px;
+            background: #f8fafc;
+            border: 1.5px solid var(--border-color);
+            padding: 8px 16px;
+            border-radius: var(--radius-md);
+            width: fit-content;
         }
 
         .star-btn {
             background: none;
             border: none;
-            font-size: 1.8rem;
-            color: var(--star-gray);
+            font-size: 2rem;
+            color: var(--star-inactive);
             cursor: pointer;
             line-height: 1;
-            padding: 2px 4px;
-            transition: color 0.15s ease, transform 0.15s ease;
+            padding: 0 2px;
+            transition: transform 0.15s ease, color 0.15s ease;
         }
 
         .star-btn:hover {
-            transform: scale(1.15);
+            transform: scale(1.2);
         }
 
         .star-btn.active,
         .star-btn.hovered {
             color: var(--star-gold);
+            filter: drop-shadow(0 2px 4px rgba(245, 158, 11, 0.3));
         }
 
         .rating-feedback-text {
-            font-size: 0.88rem;
-            font-weight: 600;
-            color: var(--accent-color);
-            margin-left: 8px;
+            font-size: 0.9rem;
+            font-weight: 700;
+            color: var(--primary-light);
+            margin-left: 10px;
         }
 
+        /* Category Radio Pills */
         .category-radios {
             display: flex;
             gap: 10px;
@@ -440,23 +776,26 @@
         }
 
         .category-radio-btn label {
-            display: inline-block;
-            padding: 7px 14px;
-            font-size: 0.85rem;
-            border: 1px solid var(--border-color);
-            border-radius: 20px;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 8px 16px;
+            font-size: 0.88rem;
+            font-weight: 600;
+            border: 1.5px solid var(--border-color);
+            border-radius: var(--radius-full);
             cursor: pointer;
-            background: var(--bg-secondary);
+            background: #f8fafc;
             color: var(--text-muted);
-            transition: all 0.2s ease;
+            transition: all var(--transition-normal);
             user-select: none;
         }
 
         .category-radio-btn input:checked + label {
-            background: var(--accent-light);
-            border-color: var(--accent-color);
-            color: var(--primary-color);
-            font-weight: 600;
+            background: #eff6ff;
+            border-color: var(--primary-light);
+            color: var(--primary);
+            box-shadow: 0 2px 8px rgba(59, 130, 246, 0.15);
         }
 
         .btn-submit {
@@ -464,164 +803,181 @@
             background: linear-gradient(135deg, #1e3a8a 0%, #2563eb 100%);
             color: #ffffff;
             border: none;
-            padding: 13px 20px;
-            font-size: 1rem;
-            font-weight: 600;
-            border-radius: var(--radius-sm);
+            padding: 14px 24px;
+            font-size: 1.05rem;
+            font-weight: 700;
+            font-family: inherit;
+            border-radius: var(--radius-md);
             cursor: pointer;
-            transition: all 0.25s ease;
+            transition: all var(--transition-normal);
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 8px;
-            box-shadow: 0 4px 10px rgba(37, 99, 235, 0.2);
+            gap: 10px;
+            box-shadow: 0 6px 18px rgba(37, 99, 235, 0.25);
+            margin-top: 10px;
         }
 
         .btn-submit:hover {
             background: linear-gradient(135deg, #172554 0%, #1d4ed8 100%);
-            box-shadow: 0 6px 16px rgba(37, 99, 235, 0.3);
-            transform: translateY(-1px);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(37, 99, 235, 0.35);
         }
 
         .btn-submit:disabled {
-            opacity: 0.65;
+            opacity: 0.6;
             cursor: not-allowed;
             transform: none;
         }
 
-        /* Reviews Display Container */
+        /* Reviews Display Column */
         .reviews-display-container {
             display: flex;
             flex-direction: column;
             gap: 24px;
         }
 
-        /* Statistics Card */
+        /* Rating Stats Card */
         .rating-summary-card {
-            background: linear-gradient(135deg, #eff6ff 0%, #f8fafc 100%);
-            border: 1px solid #dbeafe;
-            border-radius: var(--radius-md);
-            padding: 22px;
+            background: #ffffff;
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-lg);
+            padding: 26px;
             display: flex;
-            gap: 24px;
+            gap: 28px;
             align-items: center;
+            box-shadow: var(--shadow-sm);
         }
 
         .rating-big-score {
             text-align: center;
-            flex: 0 0 130px;
-            border-right: 1px solid #e2e8f0;
-            padding-right: 18px;
+            flex: 0 0 140px;
+            border-right: 1px solid var(--border-color);
+            padding-right: 20px;
         }
 
         .score-number {
-            font-size: 2.6rem;
+            font-size: 3rem;
             font-weight: 800;
-            color: var(--primary-color);
+            color: var(--text-title);
             line-height: 1;
+            letter-spacing: -1px;
         }
 
         .score-stars {
             color: var(--star-gold);
-            font-size: 1.1rem;
-            margin: 4px 0;
+            font-size: 1.15rem;
+            margin: 6px 0 4px 0;
+            letter-spacing: 2px;
         }
 
         .score-total {
-            font-size: 0.85rem;
-            color: var(--text-subtle);
+            font-size: 0.88rem;
+            font-weight: 600;
+            color: var(--text-muted);
         }
 
         .rating-bars {
             flex: 1;
             display: flex;
             flex-direction: column;
-            gap: 5px;
+            gap: 7px;
         }
 
         .bar-row {
             display: flex;
             align-items: center;
-            gap: 10px;
-            font-size: 0.85rem;
+            gap: 12px;
+            font-size: 0.88rem;
         }
 
         .bar-label {
-            width: 25px;
-            color: var(--text-main);
-            font-weight: 600;
+            width: 28px;
+            color: var(--text-title);
+            font-weight: 700;
             text-align: right;
         }
 
         .bar-track {
             flex: 1;
-            height: 8px;
+            height: 9px;
             background: #e2e8f0;
-            border-radius: 4px;
+            border-radius: var(--radius-full);
             overflow: hidden;
         }
 
         .bar-fill {
             height: 100%;
-            background: var(--star-gold);
-            border-radius: 4px;
-            transition: width 0.4s ease;
+            background: linear-gradient(90deg, #f59e0b 0%, #fbbf24 100%);
+            border-radius: var(--radius-full);
+            transition: width 0.5s ease;
         }
 
         .bar-count {
-            width: 28px;
-            color: var(--text-subtle);
-            font-size: 0.8rem;
+            width: 32px;
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            font-weight: 600;
         }
 
-        /* Filter and Sort Toolbar */
+        /* Toolbar Filter & Sort */
         .reviews-toolbar {
             display: flex;
             justify-content: space-between;
             align-items: center;
             flex-wrap: wrap;
             gap: 12px;
-            padding-bottom: 8px;
-            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 6px;
         }
 
         .filter-buttons {
             display: flex;
-            gap: 6px;
+            gap: 8px;
             flex-wrap: wrap;
         }
 
         .filter-btn {
-            background: var(--bg-secondary);
+            background: #ffffff;
             border: 1px solid var(--border-color);
-            padding: 5px 12px;
-            border-radius: 16px;
-            font-size: 0.82rem;
-            font-weight: 500;
+            padding: 6px 14px;
+            border-radius: var(--radius-full);
+            font-size: 0.85rem;
+            font-weight: 600;
+            font-family: inherit;
             color: var(--text-muted);
             cursor: pointer;
-            transition: all 0.2s ease;
+            transition: all var(--transition-normal);
         }
 
         .filter-btn:hover {
-            background: #e2e8f0;
+            background: #f8fafc;
+            border-color: #cbd5e1;
+            color: var(--text-title);
         }
 
         .filter-btn.active {
-            background: var(--primary-color);
-            border-color: var(--primary-color);
+            background: var(--primary);
+            border-color: var(--primary);
             color: #ffffff;
+            box-shadow: 0 2px 8px rgba(30, 58, 138, 0.25);
         }
 
         .sort-select {
-            padding: 6px 12px;
-            font-size: 0.85rem;
+            padding: 8px 14px;
+            font-size: 0.88rem;
+            font-weight: 600;
+            font-family: inherit;
             border: 1px solid var(--border-color);
-            border-radius: var(--radius-sm);
+            border-radius: var(--radius-md);
             background: #ffffff;
-            color: var(--text-main);
+            color: var(--text-title);
             cursor: pointer;
             outline: none;
+            transition: border-color var(--transition-normal);
+        }
+
+        .sort-select:focus {
+            border-color: var(--primary-light);
         }
 
         /* Reviews List */
@@ -629,9 +985,9 @@
             display: flex;
             flex-direction: column;
             gap: 16px;
-            max-height: 600px;
+            max-height: 650px;
             overflow-y: auto;
-            padding-right: 4px;
+            padding-right: 6px;
         }
 
         .reviews-list::-webkit-scrollbar {
@@ -640,125 +996,134 @@
 
         .reviews-list::-webkit-scrollbar-thumb {
             background: #cbd5e1;
-            border-radius: 3px;
+            border-radius: var(--radius-full);
         }
 
         .review-card {
             background: #ffffff;
             border: 1px solid var(--border-color);
-            border-radius: var(--radius-md);
-            padding: 18px 20px;
-            box-shadow: var(--shadow-sm);
-            transition: box-shadow 0.2s ease, border-color 0.2s ease;
-            animation: fadeIn 0.3s ease-in-out;
+            border-radius: var(--radius-lg);
+            padding: 22px 24px;
+            box-shadow: var(--shadow-xs);
+            transition: all var(--transition-normal);
+            animation: fadeInCard 0.35s ease-out;
         }
 
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(6px); }
+        @keyframes fadeInCard {
+            from { opacity: 0; transform: translateY(8px); }
             to { opacity: 1; transform: translateY(0); }
         }
 
         .review-card:hover {
             border-color: #cbd5e1;
-            box-shadow: var(--shadow-md);
+            box-shadow: var(--shadow-sm);
         }
 
         .review-card-top {
             display: flex;
             align-items: center;
             justify-content: space-between;
-            margin-bottom: 10px;
+            margin-bottom: 12px;
         }
 
         .reviewer-info {
             display: flex;
             align-items: center;
-            gap: 12px;
+            gap: 14px;
         }
 
         .avatar-circle {
-            width: 38px;
-            height: 38px;
+            width: 44px;
+            height: 44px;
             border-radius: 50%;
-            background: linear-gradient(135deg, #3b82f6, #1e3a8a);
+            background: linear-gradient(135deg, #3b82f6 0%, #1e3a8a 100%);
             color: #ffffff;
-            font-weight: 700;
-            font-size: 0.95rem;
+            font-weight: 800;
+            font-size: 1.05rem;
             display: flex;
             align-items: center;
             justify-content: center;
             text-transform: uppercase;
+            box-shadow: 0 4px 10px rgba(59, 130, 246, 0.25);
         }
 
         .reviewer-name {
             font-weight: 700;
-            font-size: 0.98rem;
-            color: var(--text-main);
+            font-size: 1.02rem;
+            color: var(--text-title);
         }
 
         .review-date {
-            font-size: 0.8rem;
-            color: var(--text-subtle);
+            font-size: 0.82rem;
+            color: var(--text-light);
+            font-weight: 500;
         }
 
         .category-badge {
-            font-size: 0.75rem;
-            padding: 3px 9px;
-            border-radius: 12px;
-            font-weight: 600;
-            background: var(--accent-light);
-            color: var(--primary-color);
+            font-size: 0.8rem;
+            padding: 4px 12px;
+            border-radius: var(--radius-full);
+            font-weight: 700;
+            background: #eff6ff;
+            color: var(--primary);
+            border: 1px solid #dbeafe;
         }
 
         .category-badge.question {
             background: #fef3c7;
             color: #92400e;
+            border-color: #fde68a;
         }
 
         .category-badge.suggestion {
-            background: #dcfce7;
-            color: #166534;
+            background: #ecfdf5;
+            color: #065f46;
+            border-color: #a7f3d0;
         }
 
         .review-rating-stars {
             color: var(--star-gold);
-            font-size: 0.95rem;
-            margin-bottom: 8px;
+            font-size: 1.05rem;
+            margin-bottom: 10px;
             letter-spacing: 2px;
         }
 
         .review-text {
-            font-size: 0.95rem;
-            color: var(--text-muted);
-            line-height: 1.55;
+            font-size: 0.98rem;
+            color: var(--text-main);
+            line-height: 1.65;
             margin-bottom: 0;
         }
 
         .no-reviews-state {
             text-align: center;
-            padding: 40px 20px;
-            color: var(--text-subtle);
+            padding: 50px 20px;
+            background: #ffffff;
+            border: 1px dashed var(--border-color);
+            border-radius: var(--radius-lg);
+            color: var(--text-muted);
         }
 
         /* Toast Alert */
         .toast-notification {
             position: fixed;
-            bottom: 24px;
-            right: 24px;
-            background: #1e293b;
+            bottom: 30px;
+            right: 30px;
+            background: var(--primary-dark);
             color: #ffffff;
-            padding: 14px 22px;
-            border-radius: var(--radius-sm);
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+            padding: 16px 24px;
+            border-radius: var(--radius-md);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.25);
             display: flex;
             align-items: center;
-            gap: 12px;
-            font-size: 0.95rem;
-            font-weight: 500;
-            transform: translateY(100px);
+            gap: 14px;
+            font-size: 0.98rem;
+            font-weight: 600;
+            transform: translateY(120px);
             opacity: 0;
-            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+            transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
             z-index: 9999;
+            border: 1px solid rgba(255, 255, 255, 0.1);
         }
 
         .toast-notification.show {
@@ -767,46 +1132,86 @@
         }
 
         .toast-notification.success {
-            border-left: 4px solid var(--accent-emerald);
+            border-left: 5px solid var(--accent-emerald);
         }
 
         .toast-notification.error {
-            border-left: 4px solid #ef4444;
+            border-left: 5px solid var(--accent-rose);
+        }
+
+        /* Floating Scroll to Top */
+        .scroll-top-btn {
+            position: fixed;
+            bottom: 30px;
+            left: 30px;
+            width: 46px;
+            height: 46px;
+            border-radius: 50%;
+            background: var(--primary);
+            color: #ffffff;
+            border: none;
+            box-shadow: var(--shadow-md);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.25rem;
+            cursor: pointer;
+            opacity: 0;
+            visibility: hidden;
+            transition: all var(--transition-normal);
+            z-index: 999;
+        }
+
+        .scroll-top-btn.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .scroll-top-btn:hover {
+            background: var(--primary-hover);
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-lg);
         }
 
         /* Footer */
         footer {
-            background-color: #f1f5f9;
+            background-color: #f8fafc;
             border-top: 1px solid var(--border-color);
-            padding: 24px 40px;
+            padding: 30px 40px;
             text-align: center;
             color: var(--text-muted);
-            font-size: 0.9rem;
+            font-size: 0.92rem;
         }
 
-        /* Responsive Design */
-        @media (max-width: 900px) {
+        /* =========================================
+           RESPONSIVE DESIGN
+           ========================================= */
+        @media (max-width: 980px) {
             .content-wrapper {
                 flex-direction: column-reverse;
-                padding: 30px 20px;
-                gap: 30px;
+                padding: 35px 24px;
+                gap: 35px;
             }
 
             .image-column {
                 flex: none;
                 width: 100%;
-                max-width: 380px;
+                max-width: 420px;
                 margin: 0 auto;
                 position: static;
             }
 
+            .features-grid, .rules-grid {
+                grid-template-columns: 1fr;
+            }
+
             .feedback-section {
-                padding: 35px 20px;
+                padding: 45px 24px;
             }
 
             .feedback-grid {
                 grid-template-columns: 1fr;
-                gap: 30px;
+                gap: 35px;
             }
 
             .rating-summary-card {
@@ -816,9 +1221,9 @@
 
             .rating-big-score {
                 border-right: none;
-                border-bottom: 1px solid #e2e8f0;
+                border-bottom: 1px solid var(--border-color);
                 padding-right: 0;
-                padding-bottom: 14px;
+                padding-bottom: 16px;
                 width: 100%;
             }
 
@@ -827,15 +1232,15 @@
             }
 
             header {
-                padding: 35px 20px;
+                padding: 45px 24px;
             }
 
             header h1 {
-                font-size: 2.2rem;
+                font-size: 2.4rem;
             }
 
             body {
-                padding: 15px 10px;
+                padding: 15px 8px;
             }
         }
     </style>
@@ -843,111 +1248,271 @@
 <body>
 
     <div class="container">
-        <!-- Шапка сторінки -->
+        <!-- Шапка сторінки (Hero) -->
         <header>
-            <h1>Термоси</h1>
-            <p>Ваш надійний супутник для збереження ідеальної температури улюблених напоїв та страв</p>
+            <div class="hero-badge-container">
+                <span class="hero-badge">🔥 Гаряче до 24 годин</span>
+                <span class="hero-badge">❄️ Холодне до 36 годин</span>
+                <span class="hero-badge">🛡️ Сталь 18/8</span>
+            </div>
+            <h1>Термоси та Термопосуд</h1>
+            <p>Ваш надійний супутник для збереження ідеальної температури улюблених напоїв та домашніх страв у будь-яку пору року.</p>
             <div class="header-nav">
-                <a href="#about" class="nav-btn">Що таке термос?</a>
-                <a href="#benefits" class="nav-btn">Переваги</a>
-                <a href="#types" class="nav-btn">Види</a>
-                <a href="#rules" class="nav-btn">Правила</a>
-                <a href="#care" class="nav-btn">Догляд</a>
-                <a href="#feedback" class="nav-btn">💬 Відгуки та зв'язок</a>
+                <a href="#about" class="nav-btn">📖 Що таке термос?</a>
+                <a href="#benefits" class="nav-btn">✨ Переваги</a>
+                <a href="#types" class="nav-btn">🧭 Види</a>
+                <a href="#rules" class="nav-btn">⚙️ Правила</a>
+                <a href="#care" class="nav-btn">🧼 Догляд</a>
+                <a href="#feedback" class="nav-btn btn-cta-nav">💬 Відгуки та зв'язок</a>
             </div>
         </header>
 
-        <!-- Основний контент із правою колонкою для фото -->
+        <!-- Основний контент із правою колонкою вітрини -->
         <div class="content-wrapper">
             <!-- Текстова частина -->
             <main class="text-column">
                 
                 <!-- Що таке термос? -->
-                <section id="about">
-                    <h2>Що таке термос?</h2>
+                <section class="info-section" id="about">
+                    <div class="section-header-wrap">
+                        <div class="section-icon-badge">💡</div>
+                        <h2>Що таке термос?</h2>
+                    </div>
                     <p>
-                        <strong>Термос</strong> (або вакуумна колба) — це спеціальний посуд із подвійними стінками, призначений для тривалого збереження температури поміщених у нього напоїв або їжі.
+                        <strong>Термос</strong> (або вакуумна колба) — це спеціалізований посуд із подвійними стінками, між якими штучно створено глибокий вакуум. Саме вакуумний прошарок блокує природну теплопередачу через конвекцію та теплопровідність.
                     </p>
-                    <p>
-                        Принцип його роботи базується на фізичних властивостях вакууму: простір між зовнішньою та внутрішньою стінками відкачується, що практично виключає теплопередачу через теплопровідність та конвекцію. Завдяки цьому гарячі напої залишаються гарячими до 24 годин, а прохолодні напої зберігають освіжаючу прохолоду навіть у спекотний літній день.
-                    </p>
-                </section>
-
-                <!-- Переваги термосів -->
-                <section id="benefits">
-                    <h2>Переваги термосів</h2>
-                    <p>Сучасні термоси мають широкий перелік практичних переваг:</p>
-                    <ul>
-                        <li><strong>Ефективне збереження температури:</strong> підтримує тепло гарячого чаю чи кави взимку та холод лимонаду чи води влітку.</li>
-                        <li><strong>Екологічність:</strong> зменшує використання одноразових паперових і пластикових стаканчиків.</li>
-                        <li><strong>Економія коштів:</strong> дозволяє брати домашні напої та їжу з собою замість постійних покупок у закладах.</li>
-                        <li><strong>Міцність та надійність:</strong> корпуси з високоякісної нержавіючої сталі стійкі до ударів та падінь.</li>
-                        <li><strong>Герметичність:</strong> надійні клапани та кришки запобігають випадковому витіканню рідини в сумці чи рюкзаку.</li>
-                        <li><strong>Зручність у подорожах:</strong> незамінний помічник для туризму, роботи, навчання, тренувань та автоподорожей.</li>
-                    </ul>
-                </section>
-
-                <!-- Види термосів -->
-                <section id="types">
-                    <h2>Види термосів</h2>
-                    <p>Залежно від цільового призначення та конструкції, виділяють кілька основних різновидів:</p>
-                    <ol>
-                        <li><strong>Класичні термоси для напоїв:</strong> мають вузьку горловину для мінімізації тепловтрат та часто комплектуються кришкою-чашкою.</li>
-                        <li><strong>Харчові термоси (ланч-бокси):</strong> оснащені широкою горловиною, що дозволяє зручно накладати та споживати перші й другі страви.</li>
-                        <li><strong>Термокухлі (термочашки):</strong> компактні моделі об'ємом 300–500 мл зі зручною кришкою-поїлкою для швидкого використання однією рукою.</li>
-                        <li><strong>Термопляшки:</strong> стильні та легкі ємності для води та спортивних напоїв під час щоденних прогулянок чи тренувань.</li>
-                        <li><strong>Помпові термоси:</strong> великі стаціонарні моделі об'ємом від 2 до 5 літрів з пневмонасосом, зручні для офісів, пікніків та великих компаній.</li>
-                    </ol>
-                </section>
-
-                <!-- Правила використання -->
-                <section id="rules">
-                    <h2>Правила використання</h2>
-                    <p>Щоб термос служив довго та максимально ефективно зберігав температуру, дотримуйтесь простих правил:</p>
-                    <ul>
-                        <li><strong>Попередній розігрів або охолодження:</strong> перед наповненням залийте на 2–3 хвилини окріп (для гарячого) або крижану воду (для холодного), після чого вилийте її та заповніть термос стравою чи напоєм.</li>
-                        <li><strong>Оптимальний рівень наповнення:</strong> залишайте 1–2 см до нижнього краю пробки, щоб рідина не переливалася при закручуванні.</li>
-                        <li><strong>Щільне закривання:</strong> перевіряйте, щоб різьба була закручена рівно та щільно для забезпечення повної герметичності.</li>
-                        <li><strong>Уникайте небажаних продуктів:</strong> не заливайте газовані напої, сухий лід та швидкопсувні молочні продукти на тривалий час без охолодження.</li>
-                    </ul>
-                </section>
-
-                <!-- Догляд за термосом -->
-                <section id="care">
-                    <h2>Догляд за термосом</h2>
-                    <p>Правильний догляд гарантує гігієнічність та відсутність сторонніх запахів:</p>
-                    <ul>
-                        <li>Мийте термос вручну теплою водою з м'яким миючим засобом та поролоновою губкою або йоржиком.</li>
-                        <li>Не використовуйте абразивні порошки, металеві щітки та хлоровмісні відбілювачі, які можуть пошкодити захисне покриття.</li>
-                        <li>Ретельно промивайте та періодично розбирайте ущільнювальні силіконові кільця й клапани для глибокого очищення.</li>
-                        <li>Зберігайте термос виключно у відкритому або напіввідкритому вигляді, щоб уникнути появи неприємного затхлого запаху.</li>
-                    </ul>
-                    <div class="highlight-box">
-                        <p>💡 <strong>Порада:</strong> Якщо всередині колби з'явився чайний або кавовий наліт, розчиніть столову ложку харчової соди або лимонної кислоти в теплій воді, залиште на кілька годин і промийте теплою водою.</p>
+                    <div class="hero-explanation-card">
+                        <p style="margin-bottom: 8px;"><strong>Фізика збереження тепла:</strong></p>
+                        <p style="font-size: 0.95rem; color: var(--text-muted); margin-bottom: 0;">
+                            Внутрішня колба часто додатково покривається дзеркальним напиленням, що відбиває теплове випромінювання всередину. Завдяки цьому чай або кава залишаються обпікаюче гарячими до доби, а освіжаючий лимонад з льодом не нагрівається навіть у спеку.
+                        </p>
                     </div>
                 </section>
 
-                <!-- Висновок -->
-                <section>
-                    <h2>Висновок</h2>
-                    <p>
-                        Якісний термос — це практична та вигідна інвестиція у ваш комфорт, здоров'я та збереження навколишнього середовища. Обираючи термос із надійною вакуумною ізоляцією та якісними матеріалами корпусу й колби, ви забезпечуєте себе улюбленими гарячими або прохолодними напоями в будь-який час та за будь-якої погоди.
-                    </p>
+                <!-- Переваги термосів -->
+                <section class="info-section" id="benefits">
+                    <div class="section-header-wrap">
+                        <div class="section-icon-badge">⭐</div>
+                        <h2>Переваги використання термосів</h2>
+                    </div>
+                    <p>Сучасний термос поєднує високі термодинамічні показники з максимальною зручністю для щоденного ритму життя:</p>
+                    
+                    <div class="features-grid">
+                        <div class="feature-card">
+                            <div class="feature-icon-title">
+                                <span class="feature-icon">🌡️</span>
+                                <span>Температурний режим</span>
+                            </div>
+                            <p class="feature-desc">Зберігає температуру напоїв та страв гарячими до 24 годин і крижаними до 36 годин.</p>
+                        </div>
+                        <div class="feature-card">
+                            <div class="feature-icon-title">
+                                <span class="feature-icon">🌿</span>
+                                <span>Екологічна свідомість</span>
+                            </div>
+                            <p class="feature-desc">Повна відмова від одноразових пластикових і паперових стаканчиків.</p>
+                        </div>
+                        <div class="feature-card">
+                            <div class="feature-icon-title">
+                                <span class="feature-icon">💰</span>
+                                <span>Економія бюджету</span>
+                            </div>
+                            <p class="feature-desc">Улюблена кава чи домашній ланч завжди з вами без переплат у кафе.</p>
+                        </div>
+                        <div class="feature-card">
+                            <div class="feature-icon-title">
+                                <span class="feature-icon">🛡️</span>
+                                <span>Ударостійкість</span>
+                            </div>
+                            <p class="feature-desc">Корпус із харчової нержавіючої сталі AISI 304 витримує падіння та активні походи.</p>
+                        </div>
+                        <div class="feature-card">
+                            <div class="feature-icon-title">
+                                <span class="feature-icon">🔒</span>
+                                <span>100% Герметичність</span>
+                            </div>
+                            <p class="feature-desc">Надійні силіконові ущільнювачі гарантують захист від протікання у вашому рюкзаку.</p>
+                        </div>
+                        <div class="feature-card">
+                            <div class="feature-icon-title">
+                                <span class="feature-icon">🎒</span>
+                                <span>Мобільність</span>
+                            </div>
+                            <p class="feature-desc">Компактні розміри для подорожей, офісу, спортзалу, навчання та автомобіля.</p>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Види термосів -->
+                <section class="info-section" id="types">
+                    <div class="section-header-wrap">
+                        <div class="section-icon-badge">🧭</div>
+                        <h2>Види сучасних термосів</h2>
+                    </div>
+                    <p>Обирайте конструкцію відповідно до ваших цілей та формату активності:</p>
+
+                    <div class="types-container">
+                        <div class="type-item-card">
+                            <div class="type-number">1</div>
+                            <div class="type-details">
+                                <div class="type-header-row">
+                                    <span class="type-title">Класичні термоси для напоїв</span>
+                                    <span class="type-badge">0.5 – 1.5 л</span>
+                                </div>
+                                <p class="type-desc">Вузька горловина мінімізує тепловтрати під час відкривання, а кришка слугує чашкою для напоїв.</p>
+                            </div>
+                        </div>
+
+                        <div class="type-item-card">
+                            <div class="type-number">2</div>
+                            <div class="type-details">
+                                <div class="type-header-row">
+                                    <span class="type-title">Харчові термоси (ланч-бокси)</span>
+                                    <span class="type-badge">0.4 – 1.2 л</span>
+                                </div>
+                                <p class="type-desc">Широка горловина дозволяє комфортно накладати супи, каші та другі страви безпосередньо з термоса.</p>
+                            </div>
+                        </div>
+
+                        <div class="type-item-card">
+                            <div class="type-number">3</div>
+                            <div class="type-details">
+                                <div class="type-header-row">
+                                    <span class="type-title">Термокружки (термочашки)</span>
+                                    <span class="type-badge">350 – 500 мл</span>
+                                </div>
+                                <p class="type-desc">Ергономічні моделі з кнопкою швидкого відкриття однією рукою, ідеальні для авто та прогулянок.</p>
+                            </div>
+                        </div>
+
+                        <div class="type-item-card">
+                            <div class="type-number">4</div>
+                            <div class="type-details">
+                                <div class="type-header-row">
+                                    <span class="type-title">Спортивні термопляшки</span>
+                                    <span class="type-badge">500 – 750 мл</span>
+                                </div>
+                                <p class="type-desc">Легкі, мають стильне матове покриття та спеціальний носик для пиття під час тренувань.</p>
+                            </div>
+                        </div>
+
+                        <div class="type-item-card">
+                            <div class="type-number">5</div>
+                            <div class="type-details">
+                                <div class="type-header-row">
+                                    <span class="type-title">Помпові термоси</span>
+                                    <span class="type-badge">2.0 – 5.0 л</span>
+                                </div>
+                                <p class="type-desc">Великі стаціонарні місткості з пневмонасосом для сімейних пікніків, офісних перерв та кейтерингу.</p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Правила використання -->
+                <section class="info-section" id="rules">
+                    <div class="section-header-wrap">
+                        <div class="section-icon-badge">⚙️</div>
+                        <h2>Правила використання</h2>
+                    </div>
+                    <p>Прості кроки для досягнення максимального часу збереження температури:</p>
+
+                    <div class="rules-grid">
+                        <div class="rule-card">
+                            <span class="rule-icon">🔥</span>
+                            <div class="rule-text">
+                                <strong>Попередній розігрів:</strong>
+                                Залийте окріп на 2–3 хв перед заповненням чаєм або супом.
+                            </div>
+                        </div>
+                        <div class="rule-card">
+                            <span class="rule-icon">❄️</span>
+                            <div class="rule-text">
+                                <strong>Попереднє охолодження:</strong>
+                                Ополосніть крижаною водою перед наповненням соком або водою.
+                            </div>
+                        </div>
+                        <div class="rule-card">
+                            <span class="rule-icon">📏</span>
+                            <div class="rule-text">
+                                <strong>Правильний рівень:</strong>
+                                Залишайте 1.5–2 см до краю пробки, щоб рідина не переливалася.
+                            </div>
+                        </div>
+                        <div class="rule-card">
+                            <span class="rule-icon">🚫</span>
+                            <div class="rule-text">
+                                <strong>Що уникати:</strong>
+                                Не заливайте газовані напої та не зберігайте молоко без охолодження.
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Догляд за термосом -->
+                <section class="info-section" id="care">
+                    <div class="section-header-wrap">
+                        <div class="section-icon-badge">🧼</div>
+                        <h2>Догляд та чищення</h2>
+                    </div>
+                    <p>Правильне очищення продовжує термін служби колби на довгі роки:</p>
+
+                    <div class="rules-grid">
+                        <div class="rule-card">
+                            <span class="rule-icon">🧽</span>
+                            <div class="rule-text">
+                                <strong>Ручне миття:</strong>
+                                Використовуйте теплу воду з м'яким гелем та поролонову губку.
+                            </div>
+                        </div>
+                        <div class="rule-card">
+                            <span class="rule-icon">🌬️</span>
+                            <div class="rule-text">
+                                <strong>Провітрювання:</strong>
+                                Зберігайте термос виключно відкритим або з напіввідкрученою кришкою.
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="pro-tip-box">
+                        <div class="pro-tip-icon">💡</div>
+                        <div class="pro-tip-content">
+                            <p><strong>Лайфхак від експертів:</strong> Якщо всередині з'явився стійкий чайний або кавовий наліт, розчиніть 1 ст. ложку харчової соди або лимонної кислоти в теплій воді, залиште на 2–3 години та промийте — термос засяє як новий!</p>
+                        </div>
+                    </div>
                 </section>
 
             </main>
 
             <!-- Зображення праворуч від тексту -->
             <aside class="image-column">
-                <div class="image-card">
-                    <img src="thermos.png" alt="Термос із нержавіючої сталі">
-                    <div class="image-caption">Сучасний вакуумний термос із нержавіючої сталі</div>
+                <div class="showcase-card">
+                    <div class="showcase-img-wrap">
+                        <img src="thermos.png" alt="Сучасний термос із нержавіючої сталі">
+                    </div>
+                    <h3 style="font-size: 1.15rem; font-weight: 700; color: var(--text-title); margin-bottom: 4px;">Вакуумний Термос Pro</h3>
+                    <p style="font-size: 0.88rem; color: var(--text-muted); margin-bottom: 12px;">З подвійною колбою та вакуумною термоізоляцією</p>
+                    
+                    <div class="showcase-specs">
+                        <div class="spec-pill">
+                            <span>Матеріал</span>
+                            <span class="val">AISI 304 (18/8)</span>
+                        </div>
+                        <div class="spec-pill">
+                            <span>Збереження тепла</span>
+                            <span class="val">до 24 год</span>
+                        </div>
+                        <div class="spec-pill">
+                            <span>Захист від протікання</span>
+                            <span class="val">100% Lock</span>
+                        </div>
+                    </div>
                 </div>
 
-                <div class="sidebar-card">
-                    <h3>💡 Поділіться досвідом!</h3>
-                    <p>Маєте улюблений термос або перевірений рецепт термо-чаю? Залиште свій відгук для нашої спільноти.</p>
-                    <a href="#feedback" class="btn-sidebar">Написати відгук ✍️</a>
+                <div class="sidebar-action-card">
+                    <h3>💬 Маєте досвід?</h3>
+                    <p>Поділіться власними враженнями чи задайте запитання іншим користувачам нашої спільноти!</p>
+                    <a href="#feedback" class="btn-sidebar-cta">Написати відгук ✍️</a>
                 </div>
             </aside>
         </div>
@@ -955,25 +1520,28 @@
         <!-- Секція "Зворотний зв'язок та Відгуки" -->
         <section class="feedback-section" id="feedback">
             <div class="feedback-header">
+                <span class="feedback-header-badge">💬 Спільнота та досвід</span>
                 <h2>Зворотний зв'язок та Відгуки</h2>
-                <p>Дізнайтеся думку користувачів про використання термосів або поділіться власним досвідом та запитаннями</p>
+                <p>Читайте реальні відгуки користувачів про використання термосів або діліться своїми рекомендаціями та запитаннями.</p>
             </div>
 
             <div class="feedback-grid">
                 <!-- Форма зворотного зв'язку -->
                 <div class="feedback-form-card">
                     <h3>💬 Залишити відгук чи запитання</h3>
-                    <p class="form-subtitle">Ваша думка важлива для нас та інших читачів</p>
+                    <p class="form-subtitle">Ваш відгук допоможе іншим обрати ідеальний термос</p>
 
                     <form id="feedbackForm">
                         <div class="form-group">
                             <label class="form-label">Ваша оцінка <span class="req">*</span></label>
-                            <div class="rating-selector" id="starRatingSelector">
-                                <button type="button" class="star-btn" data-value="1">★</button>
-                                <button type="button" class="star-btn" data-value="2">★</button>
-                                <button type="button" class="star-btn" data-value="3">★</button>
-                                <button type="button" class="star-btn" data-value="4">★</button>
-                                <button type="button" class="star-btn" data-value="5">★</button>
+                            <div class="rating-selector-wrap">
+                                <div class="rating-selector" id="starRatingSelector">
+                                    <button type="button" class="star-btn" data-value="1">★</button>
+                                    <button type="button" class="star-btn" data-value="2">★</button>
+                                    <button type="button" class="star-btn" data-value="3">★</button>
+                                    <button type="button" class="star-btn" data-value="4">★</button>
+                                    <button type="button" class="star-btn" data-value="5">★</button>
+                                </div>
                                 <span class="rating-feedback-text" id="ratingText">5 з 5 (Відмінно)</span>
                             </div>
                             <input type="hidden" id="ratingInput" value="5">
@@ -992,7 +1560,7 @@
                                 </div>
                                 <div class="category-radio-btn">
                                     <input type="radio" id="cat-suggestion" name="category" value="suggestion">
-                                    <label for="cat-suggestion">💡 Пропозиція</label>
+                                    <label for="cat-suggestion">💡 Порада</label>
                                 </div>
                             </div>
                         </div>
@@ -1003,13 +1571,13 @@
                         </div>
 
                         <div class="form-group">
-                            <label class="form-label" for="authorEmail">Електронна пошта <span style="font-weight: normal; color: var(--text-subtle);">(за бажанням)</span></label>
+                            <label class="form-label" for="authorEmail">Електронна пошта <span style="font-weight: normal; color: var(--text-light);">(за бажанням)</span></label>
                             <input type="email" id="authorEmail" class="form-control" placeholder="name@example.com" maxlength="100">
                         </div>
 
                         <div class="form-group">
                             <label class="form-label" for="reviewMessage">Ваше повідомлення або відгук <span class="req">*</span></label>
-                            <textarea id="reviewMessage" class="form-control" placeholder="Поділіться враженнями про ваш термос, температурний режим чи поставте запитання..." required maxlength="1500"></textarea>
+                            <textarea id="reviewMessage" class="form-control" placeholder="Опишіть ваші враження про збереження температури, зручність кришки або поставте запитання..." required maxlength="1500"></textarea>
                         </div>
 
                         <button type="submit" class="btn-submit" id="submitBtn">
@@ -1028,7 +1596,7 @@
                             <div class="score-total" id="totalReviewsCount">0 відгуків</div>
                         </div>
                         <div class="rating-bars" id="ratingBarsContainer">
-                            <!-- Bars dynamically generated -->
+                            <!-- Bars dynamically rendered -->
                         </div>
                     </div>
 
@@ -1058,9 +1626,12 @@
 
         <!-- Підвал сторінки -->
         <footer>
-            <p>&copy; 2026 Сторінка про термоси. Чиста HTML5/CSS3 верстка та інтерактивний зворотний зв'язок.</p>
+            <p>&copy; 2026 Сторінка про термоси. Сучасний адаптивний дизайн з інтерактивною системою зворотного зв'язку.</p>
         </footer>
     </div>
+
+    <!-- Floating Scroll To Top Button -->
+    <button class="scroll-top-btn" id="scrollTopBtn" title="Нагору">↑</button>
 
     <!-- Toast Notification -->
     <div id="toastNotification" class="toast-notification">
@@ -1142,6 +1713,7 @@
         const toastNotification = document.getElementById('toastNotification');
         const toastMessage = document.getElementById('toastMessage');
         const toastIcon = document.getElementById('toastIcon');
+        const scrollTopBtn = document.getElementById('scrollTopBtn');
 
         // Initialize Star Rating Selector
         function initStarRating() {
@@ -1288,8 +1860,8 @@
             if (filtered.length === 0) {
                 reviewsList.innerHTML = `
                     <div class="no-reviews-state">
-                        <p>Відгуків у цій категорії поки що немає.</p>
-                        <p style="font-size: 0.9rem;">Будьте першим, хто залишить свій відгук!</p>
+                        <p style="font-weight: 600; font-size: 1.05rem; margin-bottom: 4px;">Відгуків у цій категорії поки що немає.</p>
+                        <p style="font-size: 0.92rem; color: var(--text-light); margin-bottom: 0;">Будьте першим, хто поділиться своєю думкою!</p>
                     </div>
                 `;
                 return;
@@ -1459,6 +2031,19 @@
         sortSelect.addEventListener('change', (e) => {
             currentSort = e.target.value;
             renderReviews();
+        });
+
+        // Scroll to Top logic
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 400) {
+                scrollTopBtn.classList.add('visible');
+            } else {
+                scrollTopBtn.classList.remove('visible');
+            }
+        });
+
+        scrollTopBtn.addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
         });
 
         // Initialization on Load
