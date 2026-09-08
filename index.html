@@ -2054,3 +2054,130 @@
     </script>
 </body>
 </html>
+<!doctype html>
+<html lang="uk">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Інтерактивна симуляція шляху вебзапиту від URL до DOM."
+    />
+    <title>Web Quest: достав запит до сервера</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <main class="game-shell">
+      <header class="site-header">
+        <a class="brand" href="#top" aria-label="Web Quest: на початок">
+          <span class="brand-mark">&lt;/&gt;</span>
+          <span>Web Quest</span>
+        </a>
+        <div class="score-card" aria-live="polite">
+          <span>Енергія даних</span>
+          <strong id="score">0</strong>
+        </div>
+      </header>
+
+      <section id="start-screen" class="start-screen" aria-labelledby="game-title">
+        <p class="eyebrow">Інтерактивна місія · HTML, CSS і початок JavaScript</p>
+        <h1 id="game-title">Достав запит<br />до сервера</h1>
+        <p class="lead">
+          Проведи вебзапит від URL до сторінки. На кожному кроці ти збереш одну
+          частину того, як працює веб.
+        </p>
+        <div class="url-chip" aria-label="URL для місії">
+          <span class="secure-dot"></span>
+          https://webdev.vpu29.com/courses/html
+        </div>
+        <button id="start-button" class="button button-primary" type="button">
+          Почати місію <span aria-hidden="true">→</span>
+        </button>
+        <p class="small-note">Це локальна навчальна симуляція. Реальний сервер не використовується.</p>
+      </section>
+
+      <section id="game-screen" class="game-screen hidden" aria-live="polite">
+        <div class="progress-row">
+          <div>
+            <p class="eyebrow" id="level-label">Маршрут: 0 / 9 станцій</p>
+            <h1 id="level-title">Завантаження світу</h1>
+          </div>
+          <div class="progress-copy"><span id="progress-number">0</span>%</div>
+        </div>
+        <div class="progress-track" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" aria-label="Прогрес гри">
+          <div id="progress-bar" class="progress-bar"></div>
+        </div>
+
+        <section class="request-map" aria-labelledby="path-title">
+          <div class="map-title-row">
+            <h2 id="path-title">Шлях запиту</h2>
+            <span id="map-status" class="map-status">Починаємо з URL</span>
+          </div>
+          <ol id="request-path" class="request-path">
+            <li data-step="url"><span>1</span>URL-брама</li>
+            <li data-step="dns"><span>2</span>DNS-село</li>
+            <li data-step="ip"><span>3</span>IP-маяк</li>
+            <li data-step="port"><span>4</span>Порт-брама</li>
+            <li data-step="request"><span>5</span>Рейка запиту</li>
+            <li data-step="server"><span>6</span>Вежа сервера</li>
+            <li data-step="response"><span>7</span>Міст відповіді</li>
+            <li data-step="dom"><span>8</span>DOM-майстерня</li>
+            <li data-step="javascript"><span>9</span>JS-лабораторія</li>
+          </ol>
+        </section>
+
+        <div class="play-grid">
+          <section class="mission-card" aria-labelledby="task-title">
+            <p id="location-label" class="card-label">URL-брама</p>
+            <h2 id="task-title"></h2>
+            <p id="task-text" class="task-text"></p>
+            <div id="level-visual" class="level-visual"></div>
+            <div id="answer-area" class="answer-area"></div>
+            <div id="feedback" class="feedback hidden" role="status"></div>
+            <button id="next-button" class="button button-primary hidden" type="button">
+              Наступний рівень <span aria-hidden="true">→</span>
+            </button>
+          </section>
+
+          <aside class="simulation-panel" aria-label="Дані симуляції">
+            <section class="data-card">
+              <div class="card-heading">
+                <h2>HTTP-запит</h2>
+                <span class="sim-label">Симуляція</span>
+              </div>
+              <pre id="request-preview">Очікуємо дані…</pre>
+            </section>
+            <section class="data-card">
+              <div class="card-heading">
+                <h2>Відповідь сервера</h2>
+                <span class="sim-label">Симуляція</span>
+              </div>
+              <pre id="response-preview">Сервер ще не відповів.</pre>
+            </section>
+            <section class="data-card dom-card">
+              <div class="card-heading">
+                <h2>DOM</h2>
+                <span id="dom-state" class="sim-label">Ще не створено</span>
+              </div>
+              <pre id="dom-preview">document
+└── body</pre>
+            </section>
+          </aside>
+        </div>
+      </section>
+
+      <section id="finish-screen" class="finish-screen hidden" aria-labelledby="finish-title">
+        <p class="eyebrow">Місію завершено</p>
+        <h1 id="finish-title">Ти доставив запит!</h1>
+        <p class="lead">Тепер ти бачиш основний шлях: від URL до DOM, який може змінювати JavaScript.</p>
+        <div class="final-score"><span>Твій результат</span><strong id="final-score">0 / 70</strong></div>
+        <div class="completion-list">
+          <span>✓ URL</span><span>✓ DNS</span><span>✓ HTTP</span><span>✓ DOM</span><span>✓ JavaScript</span>
+        </div>
+        <button id="restart-button" class="button button-primary" type="button">Зіграти ще раз <span aria-hidden="true">↻</span></button>
+      </section>
+    </main>
+
+    <script src="script.js"></script>
+  </body>
+</html>
